@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Icon } from 'native-base';
+import { List, ListItem, Text } from 'native-base';
 
-export default class ReactMobxTest extends Component {
+export default class BaseView extends Component {
     render() {
         return (
-            <Container>
-                <Header>
-                    <Button transparent>
-                        <Icon name='ios-arrow-back' />
-                    </Button>
-
-                    <Title>Header</Title>
-
-                    <Button transparent>
-                        <Icon name='ios-menu' />
-                    </Button>
-                </Header>
-            </Container>
+          <List>
+            <ListItem >
+                <Text>Simon Mignolet</Text>
+            </ListItem>
+            <ListItem>
+                <Text>Nathaniel Clyne</Text>
+            </ListItem>
+            <ListItem>
+                <Text>Dejan Lovren</Text>
+            </ListItem>
+          </List>
         );
     }
 }
