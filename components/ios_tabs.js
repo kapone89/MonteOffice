@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { observer } from "mobx-react/native"
 import { FooterTab, Button, Icon } from 'native-base';
 
+@observer
 export default class IosTabs extends Component {
     render() {
         return (
           <FooterTab>
-            <Button active>
+            <Button>
                 Now playing
                 <Icon name='ios-play' />
             </Button>

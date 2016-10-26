@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { observer } from "mobx-react/native"
 import { List, ListItem, Text } from 'native-base';
 
+@observer
 export default class BaseView extends Component {
     render() {
         return (

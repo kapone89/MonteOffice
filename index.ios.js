@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { observer } from "mobx-react/native"
 import { AppRegistry } from 'react-native';
 import BaseView from './components/base';
 import { Container, Header, Title, Content, Footer, Button, Icon } from 'native-base';
 import { DrawerLayoutAndroid } from 'react-native';
 import IosTabs from "./components/ios_tabs"
 
+@observer
 export default class ReactMobxTest extends Component {
     render() {
         return (
