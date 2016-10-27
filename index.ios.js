@@ -17,7 +17,7 @@ export default class ReactMobxTest extends Component {
               RoutesStore.setNavigator(navigator);
               return (<Container>
                   <Header>
-                      <Button transparent onPress={() => {RoutesStore.back()}}>
+                      <Button transparent onPress={() => {RoutesStore.go()}}>
                           <Icon name='ios-arrow-back' />
                       </Button>
 
@@ -34,7 +34,7 @@ export default class ReactMobxTest extends Component {
               </Container>)
             }}
             configureScene={(route, routeStack) =>
-              Navigator.SceneConfigs.FloatFromBottomAndroid
+              Navigator.SceneConfigs.FadeAndroid
             }
           />
         );

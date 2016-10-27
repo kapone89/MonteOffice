@@ -9,15 +9,15 @@ export default class AndroidSidebar extends Component {
         return (
           <Content>
             <List>
-              <ListItem onPress={() => {RoutesStore.go("now_playing")}}>
+              <ListItem onPress={() => {this.props.drawer.closeDrawer(); RoutesStore.go("now_playing")}}>
                   <Icon name='ios-play' />
                   <Text>Now playing</Text>
               </ListItem>
-              <ListItem onPress={() => {RoutesStore.go("find_stream")}}>
+              <ListItem onPress={() => {this.props.drawer.closeDrawer(); RoutesStore.go("find_stream")}}>
                   <Icon name='ios-search' />
                   <Text>Find stream</Text>
               </ListItem>
-              <ListItem onPress={() => {RoutesStore.go("screens")}}>
+              <ListItem onPress={() => {this.props.drawer.closeDrawer(); RoutesStore.go("screens")}}>
                   <Icon name='ios-desktop' />
                   <Text>Screens</Text>
               </ListItem>

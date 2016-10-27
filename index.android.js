@@ -10,18 +10,21 @@ import RoutesStore from "./stores/routes_store"
 export default class ReactMobxTest extends Component {
     render() {
         return (
-          <Navigator
-            initialRoute={RoutesStore.routes[0]}
-            initialRouteStack={RoutesStore.routes}
-            renderScene={(route, navigator) => {
-              RoutesStore.setNavigator(navigator);
-              return (<DrawerLayoutAndroid
-                drawerWidth={300}
-                drawerPosition={DrawerLayoutAndroid.positions.Left}
-                renderNavigationView={() => <AndroidSidebar/>}>
+          <DrawerLayoutAndroid
+            drawerWidth={300}
+            drawerPosition={DrawerLayoutAndroid.positions.Left}
+            renderNavigationView={() => <AndroidSidebar drawer={this.refs['DRAWER_REF']}/>}
+            ref={'DRAWER_REF'}
+          >
+            <Navigator
+              initialRoute={RoutesStore.routes[0]}
+              initialRouteStack={RoutesStore.routes}
+              renderScene={(route, navigator) => {
+                RoutesStore.setNavigator(navigator);
+                return (
                   <Container>
                       <Header>
-                          <Button transparent>
+                          <Button transparent onPress={() => {this.refs['DRAWER_REF'].openDrawer()}}>
                             <Icon name='ios-menu' />
                           </Button>
 
@@ -33,12 +36,14 @@ export default class ReactMobxTest extends Component {
                         <route.component/>
                       </Content>
                   </Container>
-                </DrawerLayoutAndroid>)
-            }}
-            configureScene={(route, routeStack) =>
-              Navigator.SceneConfigs.FloatFromBottomAndroid
-            }
-          />
+                )
+              }}
+              configureScene={(route, routeStack) =>
+                Navigator.SceneConfigs.FadeAndroid
+              }
+            />
+
+          </DrawerLayoutAndroid>
         );
     }
 }
