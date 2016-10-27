@@ -3,18 +3,18 @@ import { observer } from "mobx-react/native"
 import { List, ListItem, Text } from 'native-base';
 
 @observer
-export default class BaseView extends Component {
+export default class Screens extends Component {
     render() {
         return (
           <List>
             <ListItem >
-                <Text>Simon Mignolet</Text>
+                <Text>Screens</Text>
             </ListItem>
             <ListItem>
-                <Text>Nathaniel Clyne</Text>
+                <Text>Screens</Text>
             </ListItem>
             <ListItem>
-                <Text>Dejan Lovren</Text>
+                <Text>Screens</Text>
             </ListItem>
           </List>
         );
