@@ -3,18 +3,18 @@ import { observer } from "mobx-react/native"
 import { List, ListItem, Text } from 'native-base';
 
 @observer
-export default class FindStream extends Component {
+export default class PredefinedScreens extends Component {
     render() {
         return (
           <List>
             <ListItem >
-                <Text>Find stream</Text>
+                <Text>Screens</Text>
             </ListItem>
             <ListItem>
-                <Text>Find stream</Text>
+                <Text>Screens</Text>
             </ListItem>
             <ListItem>
-                <Text>Find stream</Text>
+                <Text>Screens</Text>
             </ListItem>
           </List>
         );

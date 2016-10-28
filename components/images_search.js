@@ -3,7 +3,7 @@ import { observer } from "mobx-react/native"
 import { List, ListItem, Text } from 'native-base';
 
 @observer
-export default class Screens extends Component {
+export default class ImagesSearch extends Component {
     render() {
         return (
           <List>

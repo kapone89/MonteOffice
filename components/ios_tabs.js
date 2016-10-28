@@ -12,11 +12,11 @@ export default class IosTabs extends Component {
                 Now playing
                 <Icon name='ios-play' />
             </Button>
-            <Button onPress={() => {RoutesStore.go("find_stream")}}>
+            <Button onPress={() => {RoutesStore.go("predefined_streams")}}>
                 Find stream
                 <Icon name='ios-search' />
             </Button>
-            <Button onPress={() => {RoutesStore.go("screens")}}>
+            <Button onPress={() => {RoutesStore.go("predefined_screens")}}>
                 Screens
                 <Icon name='ios-desktop' />
             </Button>

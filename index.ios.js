@@ -5,6 +5,7 @@ import { Container, Header, Title, Content, Footer, Button, Icon } from 'native-
 import { DrawerLayoutAndroid, Navigator } from 'react-native';
 import IosTabs from "./components/ios_tabs"
 import RoutesStore from "./stores/routes_store"
+import ActionButtonStore from "./stores/action_button_store"
 
 @observer
 export default class ReactMobxTest extends Component {
@@ -22,6 +23,12 @@ export default class ReactMobxTest extends Component {
                       </Button>
 
                       <Title>{route.title}</Title>
+
+                      { route.action &&
+                        <Button transparent onPress={() => { ActionButtonStore.actions[route.action]['callback']() }}>
+                            <Icon name={ActionButtonStore.actions[route.action]["icon"]} />
+                        </Button>
+                      }
                   </Header>
 
                   <Content>
