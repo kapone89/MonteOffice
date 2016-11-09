@@ -4,46 +4,27 @@ import { AppRegistry } from 'react-native';
 import { Container, Header, Title, Content, Footer, Button, Icon } from 'native-base';
 import { DrawerLayoutAndroid, Navigator } from 'react-native';
 import IosTabs from "./components/ios_tabs"
-import RoutesStore from "./stores/routes_store"
-import ActionButtonStore from "./stores/action_button_store"
 
-@observer
+import NowPlaying from "./components/now_playing";
+import StreamsSearch from "./components/streams_search";
+import ImagesSearch from "./components/images_search";
+import PredefinedScreens from "./components/predefined_screens";
+import PredefinedStreams from "./components/predefined_streams";
+
+import { nativeHistory, Route, Router, StackRoute } from 'react-router-native';
+
 export default class ReactMobxTest extends Component {
     render() {
         return (
-          <Navigator
-            initialRoute={RoutesStore.routes[0]}
-            initialRouteStack={RoutesStore.routes}
-            renderScene={(route, navigator) => {
-              RoutesStore.setNavigator(navigator);
-              return (<Container>
-                  <Header>
-                      <Button transparent onPress={() => {RoutesStore.go()}}>
-                          <Icon name='ios-arrow-back' />
-                      </Button>
-
-                      <Title>{route.title}</Title>
-
-                      { route.action &&
-                        <Button transparent onPress={() => { ActionButtonStore.actions[route.action]['callback']() }}>
-                            <Icon name={ActionButtonStore.actions[route.action]["icon"]} />
-                        </Button>
-                      }
-                  </Header>
-
-                  <Content>
-                    <route.component/>
-                  </Content>
-
-                  <Footer >
-                     <IosTabs/>
-                 </Footer>
-              </Container>)
-            }}
-            configureScene={(route, routeStack) =>
-              Navigator.SceneConfigs.FadeAndroid
-            }
-          />
+          <Router history={nativeHistory}>
+            <StackRoute path="master" component={(p) => p.children}>
+              <Route path="/" component={NowPlaying} />
+              <Route path="/streams_search" component={StreamsSearch} />
+              <Route path="/images_search" component={ImagesSearch} />
+              <Route path="/predefined_screens" component={PredefinedScreens} />
+              <Route path="/predefined_streams" component={PredefinedStreams} />
+            </StackRoute>
+          </Router>
         );
     }
 }
