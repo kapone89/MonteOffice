@@ -17,13 +17,11 @@ export default class ReactMobxTest extends Component {
     render() {
         return (
           <Router history={nativeHistory}>
-            <StackRoute path="master" component={(p) => p.children}>
               <Route path="/" component={NowPlaying} />
               <Route path="/streams_search" component={StreamsSearch} />
               <Route path="/images_search" component={ImagesSearch} />
               <Route path="/predefined_screens" component={PredefinedScreens} />
               <Route path="/predefined_streams" component={PredefinedStreams} />
-            </StackRoute>
           </Router>
         );
     }

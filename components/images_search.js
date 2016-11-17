@@ -3,6 +3,8 @@ import { observer } from "mobx-react/native"
 import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
 import { withRouter } from 'react-router-native';
 import IosTabs from "./ios_tabs";
+import { SearchBar } from 'react-native-elements'
+import imagesSearchStore from "../stores/images_search_store"
 
 @observer
 export default class ImagesSearch extends Component {
@@ -18,6 +20,7 @@ export default class ImagesSearch extends Component {
               </NativeBase.Header>
 
               <NativeBase.Content>
+                <SearchBar lightTheme onChangeText={(x) => imagesSearchStore.search(x)} />
                 <List>
                   <ListItem >
                       <Text>Screens</Text>
