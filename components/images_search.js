@@ -6,7 +6,6 @@ import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import imagesSearchStore from "../stores/images_search_store"
 
-@observer
 export default class ImagesSearch extends Component {
     render() {
         return (
@@ -20,7 +19,10 @@ export default class ImagesSearch extends Component {
               </NativeBase.Header>
 
               <NativeBase.Content>
-                <SearchBar lightTheme onChangeText={(x) => imagesSearchStore.search(x)} />
+                <SearchBar lightTheme onChangeText={(x) => console.log(x)} />
+
+
+
                 <List>
                   <ListItem >
                       <Text>Screens</Text>
