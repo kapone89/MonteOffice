@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { WebView, TouchableOpacity } from "react-native"
 import { observer } from "mobx-react/native"
 import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
 import { withRouter } from 'react-router-native';
@@ -21,7 +22,12 @@ export default class ImagesSearch extends Component {
               <NativeBase.Content>
                 <SearchBar lightTheme onChangeText={(x) => console.log(x)} />
 
-
+                <TouchableOpacity onPress={() => {console.log("aaaaa")}} onLayout={(event) => {console.log(event.nativeEvent.layout)}} >
+                  <WebView
+                    source={{url: 'http:/google.com'}}
+                    style={{alignSelf: 'stretch', height: 200}}
+                  />
+                </TouchableOpacity>
 
                 <List>
                   <ListItem >

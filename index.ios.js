@@ -17,7 +17,7 @@ export default class ReactMobxTest extends Component {
     render() {
         return (
           <Router history={nativeHistory}>
-              <Route path="/" component={ImagesSearch} />
+              <Route path="/" component={PredefinedScreens} />
               <Route path="/streams_search" component={StreamsSearch} />
               <Route path="/images_search" component={ImagesSearch} />
               <Route path="/predefined_screens" component={PredefinedScreens} />
