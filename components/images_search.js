@@ -22,12 +22,10 @@ export default class ImagesSearch extends Component {
               <NativeBase.Content>
                 <SearchBar lightTheme onChangeText={(x) => console.log(x)} />
 
-                <TouchableOpacity onPress={() => {console.log("aaaaa")}} onLayout={(event) => {console.log(event.nativeEvent.layout)}} >
-                  <WebView
-                    source={{url: 'http:/google.com'}}
-                    style={{alignSelf: 'stretch', height: 200}}
-                  />
-                </TouchableOpacity>
+                <WebView
+                  source={{uri: 'http:/google.com'}}
+                  style={{alignSelf: 'stretch', height: 200}}
+                />
 
                 <List>
                   <ListItem >

@@ -29,7 +29,7 @@ export default ScreenPreview = (props) => {
           <View style={styles.wrapper}>
               <WebView
                 style={styles.back}
-                source={{url: props.url}}
+                source={{uri: props.url}}
               />
               <TouchableOpacity style={styles.front} onPress={props.onPress}></TouchableOpacity>
           </View>
