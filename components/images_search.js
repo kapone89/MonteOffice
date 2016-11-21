@@ -5,7 +5,7 @@ import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-ba
 import { withRouter } from 'react-router-native';
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
-import imagesSearchStore from "../stores/images_search_store"
+import screensStore from "../stores/screens_store"
 
 export default class ImagesSearch extends Component {
     render() {

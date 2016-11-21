@@ -4,7 +4,9 @@ import { observer } from "mobx-react/native"
 import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
 import IosTabs from "./ios_tabs";
 import { withRouter } from 'react-router-native';
-import ScreenPreview from "./screen_preview"
+import ScreenThumbnail from "./screen_thumbnail"
+import Screen from "../models/screen"
+import screensStore from "../stores/screens_store"
 
 predefined = [
   { name: "wifi credentials", url: "http://freakone.pl/monte/wifi.html" },
@@ -37,14 +39,14 @@ export default class PredefinedScreens extends Component {
 
                 <List>
                   {
-                    predefined.map((pre) => {
+                    screensStore.predefined.map((screen) => {
                       return (
-                        <View key={pre.name}>
+                        <View key={screen.name}>
                           <ListItem >
-                              <Text>{pre.name}</Text>
+                              <Text>{screen.name}</Text>
 
                           </ListItem>
-                          <ScreenPreview url={pre.url} onPress={() => { console.log(pre.name) }} />
+                          <ScreenThumbnail screen={screen} onPress={() => { screensStore.selectScreen(screen); this.props.router.push("/screen_preview") }} />
                         </View>
                       )
                     })

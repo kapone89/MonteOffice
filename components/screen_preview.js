@@ -1,37 +1,32 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, TouchableOpacity, WebView, Dimensions } from 'react-native';
+import { WebView, TouchableOpacity } from "react-native"
+import { observer } from "mobx-react/native"
+import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
+import { withRouter } from 'react-router-native';
+import IosTabs from "./ios_tabs";
+import ScreenThumbnail from "./screen_thumbnail"
+import screensStore from "../stores/screens_store"
 
-var { height, width } = Dimensions.get('window');
-
-const styles = StyleSheet.create({
-    wrapper: {
-        flex:1,
-        width: width,
-        height: ( width * 1080 )/ 1920
-    },
-    back: {
-        width: width,
-        height: ( width * 1080 )/ 1920,
-        zIndex: 0
-    },
-    front: {
-        position: 'absolute',
-        top:0,
-        left:0,
-        width: width,
-        height: ( width * 1080 )/ 1920,
-        zIndex: 1
-    }
-});
-
-export default ScreenPreview = (props) => {
+export default class ScreenPreview extends Component {
+    render() {
         return (
-          <View style={styles.wrapper}>
-              <WebView
-                style={styles.back}
-                source={{uri: props.url}}
-              />
-              <TouchableOpacity style={styles.front} onPress={props.onPress}></TouchableOpacity>
-          </View>
-        )
+          <NativeBase.Container>
+              <NativeBase.Header>
+                  <Button transparent>
+                      <Icon name='ios-arrow-back' />
+                  </Button>
+
+                  <Title>Screen preview</Title>
+              </NativeBase.Header>
+
+              <NativeBase.Content>
+                <ScreenThumbnail screen={screensStore.chosenScreen} />
+              </NativeBase.Content>
+
+              <NativeBase.Footer >
+                 <IosTabs/>
+             </NativeBase.Footer>
+          </NativeBase.Container>
+        );
     }
+}
