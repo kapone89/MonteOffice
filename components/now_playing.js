@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { View } from "react-native"
 import { observer } from "mobx-react/native"
 import NativeBase, { Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon } from 'native-base';
 import { Range, H1, H4 } from 'carbon-native';
 import IosTabs from "./ios_tabs";
 import { withRouter } from 'react-router-native';
+import nowPlayingStore from "../stores/now_playing_store"
 
-@withRouter
+@observer
 export default class NowPlaying extends Component {
+    componentDidMount() { nowPlayingStore.reload() }
     render() {
         return (
           <NativeBase.Container>
@@ -15,38 +18,47 @@ export default class NowPlaying extends Component {
                       <Icon name='ios-arrow-back' />
                   </Button>
 
-                  <Title>NowPlaying</Title>
+                  <Title>Now playing</Title>
 
-                  <Button transparent onPress={() => { this.props.router.push("/streams_search") }}>
-                      <Icon name="ios-search" />
+                  <Button transparent onPress={() => { nowPlayingStore.reload() }}>
+                      <Icon name="ios-refresh" />
                   </Button>
               </NativeBase.Header>
 
               <NativeBase.Content>
                 <Card>
-                    <CardItem header>
-                        <Text>Reloading...</Text>
-                    </CardItem>
+                    {
+                      nowPlayingStore.isWorking && <View>
+                        <CardItem header>
+                            <Text>Reloading...</Text>
+                        </CardItem>
 
-                    <CardItem>
-                        <Spinner color="blue"/>
-                    </CardItem>
+                        <CardItem>
+                            <Spinner color="blue"/>
+                        </CardItem>
+                      </View>
+                    }
 
-                    <CardItem header>
-                        <Text>Stream info</Text>
-                    </CardItem>
+                    {
+                      !nowPlayingStore.isWorking && <View>
+                        <CardItem header>
+                            <Text>Stream info</Text>
+                        </CardItem>
 
-                    <CardItem>
-                        <Text>Radio ESKA</Text>
-                    </CardItem>
+                        <CardItem>
+                            <H1>{nowPlayingStore.nowPlayingName}</H1>
+                            <Text>{nowPlayingStore.nowPlayingUrl}</Text>
+                        </CardItem>
 
-                    <CardItem header>
-                        <Text>Volume</Text>
-                    </CardItem>
+                        <CardItem header>
+                            <Text>Volume</Text>
+                        </CardItem>
 
-                    <CardItem>
-                        <Range/>
-                    </CardItem>
+                        <CardItem>
+                            <Range onValueChange={(v) => {nowPlayingStore.changeVolume(parseInt(v * 10) * 10)}}/>
+                        </CardItem>
+                      </View>
+                    }
                </Card>
               </NativeBase.Content>
 

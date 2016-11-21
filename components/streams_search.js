@@ -19,7 +19,7 @@ export default class StreamsSearch extends Component {
                       <Icon name='ios-arrow-back' />
                   </Button>
 
-                  <Title>StreamsSearch</Title>
+                  <Title>Search streams</Title>
 
                   { streamsStore.isWorking &&
                     <Button transparent>
