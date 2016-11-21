@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { WebView, TouchableOpacity } from "react-native"
 import { observer } from "mobx-react/native"
-import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
+import NativeBase, { Button, Icon, Title, Text, Grid, Col, Row } from 'native-base';
 import IosTabs from "./ios_tabs";
 import ScreenThumbnail from "./screen_thumbnail"
 import screensStore from "../stores/screens_store"
+import RNE from 'react-native-elements'
 
 @observer
 export default class ScreenPreview extends Component {
@@ -21,6 +22,20 @@ export default class ScreenPreview extends Component {
 
               <NativeBase.Content>
                 <ScreenThumbnail screen={screensStore.chosenScreen} />
+
+                <Grid style={{marginTop: 10, height: 170}}>
+                  <Row>
+                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #1"/></Col>
+                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #2"/></Col>
+                  </Row>
+                  <Row>
+                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #3"/></Col>
+                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #4"/></Col>
+                  </Row>
+                  <Row>
+                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="The BIG one"/></Col>
+                  </Row>
+                </Grid>
               </NativeBase.Content>
 
               <NativeBase.Footer >
