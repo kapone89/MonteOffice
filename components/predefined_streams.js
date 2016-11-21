@@ -5,6 +5,7 @@ import { TouchableHighlight } from "react-native"
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
 import { withRouter } from 'react-router-native';
+import streamsStore from "../stores/streams_store"
 
 @withRouter
 export default class PredefinedStreams extends Component {
@@ -16,7 +17,7 @@ export default class PredefinedStreams extends Component {
                       <Icon name='ios-arrow-back' />
                   </Button>
 
-                  <Title>PredefinedStreams</Title>
+                  <Title>Predefined Streams</Title>
 
                   <Button transparent onPress={() => { this.props.router.push("/streams_search") }}>
                       <Icon name="ios-search" />
@@ -26,15 +27,15 @@ export default class PredefinedStreams extends Component {
               <NativeBase.Content>
                 <List>
                   {
-                    [1, 2, 3, 4, 5].map((x) => {
+                    streamsStore.predefined.map((stream) => {
                       return (
-                        <Item key={x} onPress={() => {}}>
+                        <Item key={stream.id} onPress={() => { stream.play() }}>
                           <ItemIcon>
                             <Icon name="ios-play"/>
                           </ItemIcon>
                           <ItemContent>
-                            <ItemText>Radio {x}</ItemText>
-                            <Note>R&B</Note>
+                            <ItemText>{stream.name}</ItemText>
+                            <Note>{stream.genre}</Note>
                           </ItemContent>
                         </Item>
                       )
