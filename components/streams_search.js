@@ -4,7 +4,12 @@ import NativeBase, { Title, Icon, InputGroup, Input, Button, Grid, Col } from 'n
 import { TouchableHighlight } from "react-native"
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
+import { SearchBar } from 'react-native-elements'
+import streamsStore from "../stores/streams_store"
 
+
+
+@observer
 export default class StreamsSearch extends Component {
     render() {
         return (
@@ -18,17 +23,19 @@ export default class StreamsSearch extends Component {
               </NativeBase.Header>
 
               <NativeBase.Content>
+                <SearchBar lightTheme onChangeText={(x) => streamsStore.search(x)} />
+
                 <List>
                   {
-                    [1, 2, 3, 4, 5].map((x) => {
+                    streamsStore.searchResults.map((stream) => {
                       return (
-                        <Item key={x} onPress={() => {}}>
+                        <Item key={stream.id} onPress={() => { stream.play() }}>
                           <ItemIcon>
                             <Icon name="ios-play"/>
                           </ItemIcon>
                           <ItemContent>
-                            <ItemText>Radio {x}</ItemText>
-                            <Note>R&B</Note>
+                            <ItemText>{stream.name}</ItemText>
+                            <Note>{stream.genre}</Note>
                           </ItemContent>
                         </Item>
                       )
