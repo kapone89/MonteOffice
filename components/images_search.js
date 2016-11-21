@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { WebView, TouchableOpacity } from "react-native"
 import { observer } from "mobx-react/native"
 import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
-import { withRouter } from 'react-router-native';
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import screensStore from "../stores/screens_store"
 
+@observer
 export default class ImagesSearch extends Component {
     render() {
         return (

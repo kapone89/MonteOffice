@@ -3,7 +3,7 @@ import { View } from "react-native"
 import { observer } from "mobx-react/native"
 import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
 import IosTabs from "./ios_tabs";
-import { withRouter } from 'react-router-native';
+import router from '../stores/router';
 import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
 import screensStore from "../stores/screens_store"
@@ -17,7 +17,7 @@ predefined = [
   { name: "Sample GIF 2", url: "http://max.kapone89.ml/#http://i.imgur.com/132B17l.gif" },
 ]
 
-@withRouter
+@observer
 export default class PredefinedScreens extends Component {
     render() {
         return (
@@ -29,7 +29,7 @@ export default class PredefinedScreens extends Component {
 
                   <Title>PredefinedScreens</Title>
 
-                  <Button transparent onPress={() => { this.props.router.push("/images_search") }}>
+                  <Button transparent onPress={() => { router.go("/images_search") }}>
                       <Icon name="ios-search" />
                   </Button>
               </NativeBase.Header>
@@ -46,7 +46,7 @@ export default class PredefinedScreens extends Component {
                               <Text>{screen.name}</Text>
 
                           </ListItem>
-                          <ScreenThumbnail screen={screen} onPress={() => { screensStore.selectScreen(screen); this.props.router.push("/screen_preview") }} />
+                          <ScreenThumbnail screen={screen} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
                         </View>
                       )
                     })

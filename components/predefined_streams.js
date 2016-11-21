@@ -4,10 +4,10 @@ import NativeBase, { Title, Icon, InputGroup, Input, Button, Grid, Col } from 'n
 import { TouchableHighlight } from "react-native"
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
-import { withRouter } from 'react-router-native';
+import router from '../stores/router';
 import streamsStore from "../stores/streams_store"
 
-@withRouter
+@observer
 export default class PredefinedStreams extends Component {
     render() {
         return (
@@ -19,7 +19,7 @@ export default class PredefinedStreams extends Component {
 
                   <Title>Predefined Streams</Title>
 
-                  <Button transparent onPress={() => { this.props.router.push("/streams_search") }}>
+                  <Button transparent onPress={() => { router.go("/streams_search") }}>
                       <Icon name="ios-search" />
                   </Button>
               </NativeBase.Header>

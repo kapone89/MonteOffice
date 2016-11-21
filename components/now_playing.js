@@ -4,7 +4,6 @@ import { observer } from "mobx-react/native"
 import NativeBase, { Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon } from 'native-base';
 import { Range, H1, H4 } from 'carbon-native';
 import IosTabs from "./ios_tabs";
-import { withRouter } from 'react-router-native';
 import nowPlayingStore from "../stores/now_playing_store"
 
 @observer
