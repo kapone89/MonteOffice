@@ -6,7 +6,6 @@ import { fetch } from "fetch";
 class ImagesSearchStore {
   constructor() {
     this.images = this.search("")
-    console.log(this.images);
   }
 
   search(query) {

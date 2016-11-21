@@ -1,5 +1,9 @@
 import lodash from "lodash"
 import { fetch } from "fetch";
+import { DOMParser } from 'xmldom';
+import { select } from 'xpath';
+import { stringify } from 'query-string';
+import playlistParser from "playlist-parser"
 
 
 export default class Stream {
@@ -34,6 +38,35 @@ export default class Stream {
   }
 
   playRadiosure(radiosurePage) {
+    fetch(radiosurePage)
+    .then((response) => response.text())
+    .then((responseText) => {
+      var doc = new DOMParser({errorHandler: {}}).parseFromString(responseText);
+      var nodes = select("//tr[contains(.//td, 'Source ')]//a", doc);
+      var streamUrls = lodash.map(nodes, "textContent").filter((x) => {return x.length > 4})
+      this.autoChooseStream(streamUrls)
+    })
+  }
 
+  autoChooseStream(streamsArray) {
+    this.playStream(lodash.sample(streamsArray));
+  }
+
+  playStream(streamUrl) {
+    var isPlaylist = /\.(pls|m3u|asx)$/gi.exec(streamUrl)
+    if (isPlaylist) {
+      this.playPlaylist(streamUrl, isPlaylist[1].toUpperCase())
+    } else {
+      this.playUrl(streamUrl)
+    }
+  }
+
+  playPlaylist(streamUrl, type) {
+    fetch(streamUrl)
+    .then((response) => response.text())
+    .then((responseText) => {
+      var results = playlistParser[type].parse(responseText)
+      this.playUrl(lodash.sample(results).file);
+    })
   }
 }

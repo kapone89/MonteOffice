@@ -14,6 +14,7 @@
     "mobx": "^2.6.0",
     "mobx-react": "^3.5.8",
     "native-base": "^0.5.11",
+    "playlist-parser": "0.0.12",
     "query-string": "^4.2.3",
     "react": "15.3.2",
     "react-native": "0.35.0",

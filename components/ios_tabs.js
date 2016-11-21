@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-native';
 
 // export default const IosTabs = withRouter((props) => {
 
+@withRouter
 export default class IosTabs extends Component {
     render() {
         return (

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
-import NativeBase, { Title, Icon, InputGroup, Input, Button, Grid, Col } from 'native-base';
+import NativeBase, { Title, Icon, InputGroup, Input, Button, Grid, Col, Spinner } from 'native-base';
 import { TouchableHighlight } from "react-native"
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
@@ -20,6 +20,12 @@ export default class StreamsSearch extends Component {
                   </Button>
 
                   <Title>StreamsSearch</Title>
+
+                  { streamsStore.isWorking &&
+                    <Button transparent>
+                        <Spinner color="blue"/>
+                    </Button>
+                  }
               </NativeBase.Header>
 
               <NativeBase.Content>

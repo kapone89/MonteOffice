@@ -9,6 +9,7 @@ import { observable } from "mobx"
 
 class StreamsStore {
   @observable searchResults = [];
+  @observable isWorking = false
 
   constructor() {
     this.predefined = [
@@ -19,9 +20,9 @@ class StreamsStore {
   }
 
   search(query) {
+    this.isWorking = true
     clearTimeout(this.streamSearchPromise);
     this.streamSearchPromise = setTimeout(() => {
-
       let params = {
         status: "active",
         search: query,
@@ -34,7 +35,6 @@ class StreamsStore {
         .then((responseText) => {
           var doc = new DOMParser({errorHandler: {}}).parseFromString(responseText)
           var nodes = select("//a[contains(@href, 'details.php')]", doc)
-          console.log(nodes);
           this.searchResults = nodes.map((n) => {
             return new Stream({
               id: n.attributes[0].nodeValue,
@@ -43,6 +43,7 @@ class StreamsStore {
               radiosure_page: ("http://www.radiosure.com/rsdbms/" + n.attributes[0].nodeValue),
             })
           })
+          this.isWorking = false
         })
 
 
