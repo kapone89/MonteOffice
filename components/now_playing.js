@@ -55,7 +55,10 @@ export default class NowPlaying extends Component {
                         </CardItem>
 
                         <CardItem>
-                            <Range onValueChange={(v) => {nowPlayingStore.changeVolume(parseInt(v * 10) * 10)}}/>
+                            <Range
+                              onValueChange={(v) => {nowPlayingStore.changeVolume(parseInt(v * 10) * 10)}}
+                              value={nowPlayingStore.volume / 100}
+                            />
                         </CardItem>
                       </View>
                     }
