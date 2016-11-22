@@ -45,6 +45,7 @@ class StreamsStore {
           })
           this.isWorking = false
         })
+        .catch(() => {})
 
 
     }, 1000);

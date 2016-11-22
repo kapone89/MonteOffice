@@ -25,15 +25,25 @@ export default class ScreenPreview extends Component {
 
                 <Grid style={{marginTop: 10, height: 170}}>
                   <Row>
-                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #1"/></Col>
-                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #2"/></Col>
+                    <Col>
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #1" onPress={() => {screensStore.chosenScreen.setOnTv(1)}} />
+                    </Col>
+                    <Col>
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #2" onPress={() => {screensStore.chosenScreen.setOnTv(2)}} />
+                    </Col>
                   </Row>
                   <Row>
-                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #3"/></Col>
-                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #4"/></Col>
+                    <Col>
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #3" onPress={() => {screensStore.chosenScreen.setOnTv(3)}} />
+                    </Col>
+                    <Col>
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #4" onPress={() => {screensStore.chosenScreen.setOnTv(4)}} />
+                    </Col>
                   </Row>
                   <Row>
-                    <Col><RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="The BIG one"/></Col>
+                    <Col>
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="The BIG one" onPress={() => {screensStore.chosenScreen.setOnTv(5)}} />
+                    </Col>
                   </Row>
                 </Grid>
               </NativeBase.Content>

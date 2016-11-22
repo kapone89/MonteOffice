@@ -21,6 +21,7 @@ class NowPlayingStore {
         this.volume = responseJson.volume;
         this.fetchStreamMeta();
       })
+      .catch(() => {})
   }
 
   fetchStreamMeta() {
@@ -48,7 +49,8 @@ class NowPlayingStore {
           volume: newVolume,
           address: this.nowPlayingUrl,
         })
-      });
+      })
+        .catch(() => {})
     }, 1000);
   }
 

@@ -27,7 +27,7 @@ export default class PredefinedScreens extends Component {
                       <Icon name='ios-arrow-back' />
                   </Button>
 
-                  <Title>PredefinedScreens</Title>
+                  <Title>Predefined screens</Title>
 
                   <Button transparent onPress={() => { router.go("/images_search") }}>
                       <Icon name="ios-search" />

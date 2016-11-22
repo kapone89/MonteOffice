@@ -21,7 +21,7 @@ export default class ImagesSearch extends Component {
                       <Icon name='ios-arrow-back' />
                   </Button>
 
-                  <Title>ImagesSearch</Title>
+                  <Title>Find GIF</Title>
 
                   { screensStore.isWorking &&
                     <Button transparent>

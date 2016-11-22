@@ -44,6 +44,7 @@ class ScreensStore {
           this.searchResults = this.parseGiphyResponse(responseJson)
           this.isWorking = false
         })
+        .catch(() => {})
 
     }, 1000);
   }

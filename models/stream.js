@@ -34,6 +34,7 @@ export default class Stream {
         volume: 80,
         address: streamUrl,
       })
+      .catch(() => {})
     });
   }
 
@@ -46,6 +47,7 @@ export default class Stream {
       var streamUrls = lodash.map(nodes, "textContent").filter((x) => {return x.length > 4})
       this.autoChooseStream(streamUrls)
     })
+    .catch(() => {})
   }
 
   autoChooseStream(streamsArray) {
@@ -68,5 +70,6 @@ export default class Stream {
       var results = playlistParser[type].parse(responseText)
       this.playUrl(lodash.sample(results).file);
     })
+    .catch(() => {})
   }
 }
