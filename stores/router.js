@@ -37,6 +37,15 @@ class Router {
       this.stack.push(route);
     }
   }
+
+  back(){
+    if (this.stack.length > 1) {
+      this.stack.pop()
+      return true
+    } else {
+      return false
+    }
+  }
 }
 
 const router = new Router()

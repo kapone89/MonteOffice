@@ -5,6 +5,7 @@ import NativeBase, { Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Ic
 import { Range, H1, H4 } from 'carbon-native';
 import IosTabs from "./ios_tabs";
 import nowPlayingStore from "../stores/now_playing_store"
+import router from "../stores/router"
 
 @observer
 export default class NowPlaying extends Component {
@@ -13,7 +14,7 @@ export default class NowPlaying extends Component {
         return (
           <NativeBase.Container>
               <NativeBase.Header>
-                  <Button transparent>
+                  <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />
                   </Button>
 

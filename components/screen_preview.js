@@ -6,6 +6,7 @@ import IosTabs from "./ios_tabs";
 import ScreenThumbnail from "./screen_thumbnail"
 import screensStore from "../stores/screens_store"
 import RNE from 'react-native-elements'
+import router from "../stores/router"
 
 @observer
 export default class ScreenPreview extends Component {
@@ -13,7 +14,7 @@ export default class ScreenPreview extends Component {
         return (
           <NativeBase.Container>
               <NativeBase.Header>
-                  <Button transparent>
+                  <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />
                   </Button>
 

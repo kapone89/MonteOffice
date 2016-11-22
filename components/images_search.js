@@ -17,7 +17,7 @@ export default class ImagesSearch extends Component {
         return (
           <NativeBase.Container>
               <NativeBase.Header>
-                  <Button transparent>
+                  <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />
                   </Button>
 

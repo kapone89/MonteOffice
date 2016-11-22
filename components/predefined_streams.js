@@ -13,7 +13,7 @@ export default class PredefinedStreams extends Component {
         return (
           <NativeBase.Container>
               <NativeBase.Header>
-                  <Button transparent>
+                  <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />
                   </Button>
 

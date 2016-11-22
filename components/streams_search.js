@@ -6,7 +6,7 @@ import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import streamsStore from "../stores/streams_store"
-
+import router from "../stores/router"
 
 
 @observer
@@ -15,7 +15,7 @@ export default class StreamsSearch extends Component {
         return (
           <NativeBase.Container>
               <NativeBase.Header>
-                  <Button transparent>
+                  <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />
                   </Button>
 
