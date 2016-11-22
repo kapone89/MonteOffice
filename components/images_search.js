@@ -15,7 +15,7 @@ export default class ImagesSearch extends Component {
     render() {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
         return (
-          <NativeBase.Container>
+          <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header>
                   <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />

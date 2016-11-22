@@ -12,7 +12,7 @@ import router from "../stores/router"
 export default class ScreenPreview extends Component {
     render() {
         return (
-          <NativeBase.Container>
+          <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header>
                   <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />

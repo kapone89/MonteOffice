@@ -12,7 +12,7 @@ export default class NowPlaying extends Component {
     componentDidMount() { nowPlayingStore.reload() }
     render() {
         return (
-          <NativeBase.Container>
+          <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header>
                   <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />

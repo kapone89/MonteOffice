@@ -21,7 +21,7 @@ predefined = [
 export default class PredefinedScreens extends Component {
     render() {
         return (
-          <NativeBase.Container>
+          <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header>
                   <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />

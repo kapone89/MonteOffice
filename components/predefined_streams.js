@@ -11,7 +11,7 @@ import streamsStore from "../stores/streams_store"
 export default class PredefinedStreams extends Component {
     render() {
         return (
-          <NativeBase.Container>
+          <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header>
                   <Button transparent onPress={() => { router.back() }}>
                       <Icon name='ios-arrow-back' />
