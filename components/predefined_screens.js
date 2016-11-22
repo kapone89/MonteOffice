@@ -41,12 +41,12 @@ export default class PredefinedScreens extends Component {
                   {
                     screensStore.predefined.map((screen) => {
                       return (
-                        <View key={screen.name}>
+                        <View key={screen.id}>
                           <ListItem >
                               <Text>{screen.name}</Text>
 
                           </ListItem>
-                          <ScreenThumbnail screen={screen} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
+                          <ScreenThumbnail screen={screen} size={1} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
                         </View>
                       )
                     })

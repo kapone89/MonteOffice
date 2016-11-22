@@ -8,7 +8,6 @@ export default class Screen {
     this.id = params.id;
     this.name = params.name;
     this.website = params.website;
-    this.image_url = params.image_url;
-    this.image_thumb_url = params.image_thumb_url;
+    this.thumb = params.thumb;
   }
 }

@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
-import { WebView, TouchableOpacity } from "react-native"
+import { WebView, TouchableOpacity, View } from "react-native"
 import { observer } from "mobx-react/native"
 import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import screensStore from "../stores/screens_store"
+import ScreenThumbnail from "./screen_thumbnail"
+import Screen from "../models/screen"
+import lodash from "lodash"
+import router from "../stores/router"
 
 @observer
 export default class ImagesSearch extends Component {
     render() {
+        var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
         return (
           <NativeBase.Container>
               <NativeBase.Header>
@@ -22,22 +27,21 @@ export default class ImagesSearch extends Component {
               <NativeBase.Content>
                 <SearchBar lightTheme onChangeText={(x) => console.log(x)} />
 
-                <WebView
-                  source={{uri: 'http:/google.com'}}
-                  style={{alignSelf: 'stretch', height: 200}}
-                />
-
-                <List>
-                  <ListItem >
-                      <Text>Screens</Text>
-                  </ListItem>
-                  <ListItem>
-                      <Text>Screens</Text>
-                  </ListItem>
-                  <ListItem>
-                      <Text>Screens</Text>
-                  </ListItem>
-                </List>
+                {
+                  lodash.chunk(screensStore.searchResults, 3).map((chunk) => {
+                    return (
+                      <View key={chunk[0].id} style={{flex: 1, flexDirection: 'row'}}>
+                        {
+                          chunk.map((screen) => {
+                            return (
+                              <ScreenThumbnail thumb key={screen.id} screen={screen} size={0.333} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
+                            )
+                          })
+                        }
+                      </View>
+                    )
+                  })
+                }
               </NativeBase.Content>
 
               <NativeBase.Footer >

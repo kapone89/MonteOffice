@@ -21,7 +21,7 @@ export default class ScreenPreview extends Component {
               </NativeBase.Header>
 
               <NativeBase.Content>
-                <ScreenThumbnail screen={screensStore.chosenScreen} />
+                <ScreenThumbnail size={1} screen={screensStore.chosenScreen} />
 
                 <Grid style={{marginTop: 10, height: 170}}>
                   <Row>
