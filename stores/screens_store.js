@@ -1,16 +1,16 @@
-import results from "./giphy_fake_search_results"
 import lodash from "lodash"
 import { fetch } from "fetch";
 import Screen from "../models/screen"
 import { observable } from "mobx"
+import { stringify } from 'query-string';
 
 
 class ScreensStore {
   @observable chosenScreen = null;
   @observable searchResults = []
+  @observable isWorking = false
 
   constructor() {
-    this.search("")
     this.predefined = [
       new Screen({id: 1, name: "wifi credentials", website: "http://freakone.pl/monte/wifi.html" }),
       new Screen({id: 2, name: "instafeed", website: "http://freakone.pl/monte/4.html" }),
@@ -19,10 +19,37 @@ class ScreensStore {
       new Screen({id: 5, name: "Sample GIF 1", website: "http://max.kapone89.ml#https://thumbs.gfycat.com/EnchantingHiddenAmethystsunbird-size_restricted.gif" }),
       new Screen({id: 6, name: "Sample GIF 2", website: "http://max.kapone89.ml/#http://i.imgur.com/132B17l.gif" }),
     ]
+    this.imagesSearchPromise = null
+  }
+
+  searchFake(query) {
+    this.searchResults = results.data.map((img) => {
+      return new Screen({
+        id: img.id,
+        name: img.slug,
+        thumb: img.images.downsized_medium.url,
+        website: `http://max.kapone89.ml/#${img.images.original.url}`,
+      });
+    })
   }
 
   search(query) {
-    this.searchResults = results.data.map((img) => {
+    this.isWorking = true
+    clearTimeout(this.imagesSearchPromise);
+    this.imagesSearchPromise = setTimeout(() => {
+      params = {q: query, api_key: "dc6zaTOxFJmzC"}
+      fetch('http://api.giphy.com/v1/gifs/search?' + stringify(params))
+        .then((response) => response.json())
+        .then((responseJson) => {
+          this.searchResults = this.parseGiphyResponse(responseJson)
+          this.isWorking = false
+        })
+
+    }, 1000);
+  }
+
+  parseGiphyResponse(data) {
+    return data.data.map((img) => {
       return new Screen({
         id: img.id,
         name: img.slug,

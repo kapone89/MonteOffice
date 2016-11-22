@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { WebView, TouchableOpacity, View } from "react-native"
 import { observer } from "mobx-react/native"
-import NativeBase, { Button, Icon, Title, List, ListItem, Text } from 'native-base';
+import NativeBase, { Button, Icon, Title, List, ListItem, Text, Spinner } from 'native-base';
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import screensStore from "../stores/screens_store"
@@ -22,10 +22,16 @@ export default class ImagesSearch extends Component {
                   </Button>
 
                   <Title>ImagesSearch</Title>
+
+                  { screensStore.isWorking &&
+                    <Button transparent>
+                        <Spinner color="blue"/>
+                    </Button>
+                  }
               </NativeBase.Header>
 
               <NativeBase.Content>
-                <SearchBar lightTheme onChangeText={(x) => console.log(x)} />
+                <SearchBar lightTheme onChangeText={(x) => screensStore.search(x)} />
 
                 {
                   lodash.chunk(screensStore.searchResults, 3).map((chunk) => {
@@ -34,7 +40,13 @@ export default class ImagesSearch extends Component {
                         {
                           chunk.map((screen) => {
                             return (
-                              <ScreenThumbnail thumb key={screen.id} screen={screen} size={0.333} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
+                              <ScreenThumbnail
+                                thumb
+                                key={screen.id}
+                                screen={screen}
+                                size={0.333}
+                                onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }}
+                              />
                             )
                           })
                         }
