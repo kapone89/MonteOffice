@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "ReactMobxTest.app"
-               BlueprintName = "ReactMobxTest"
-               ReferencedContainer = "container:ReactMobxTest.xcodeproj">
+               BuildableName = "MonteOffice.app"
+               BlueprintName = "MonteOffice"
+               ReferencedContainer = "container:MonteOffice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ReactMobxTestTests.xctest"
-               BlueprintName = "ReactMobxTestTests"
-               ReferencedContainer = "container:ReactMobxTest.xcodeproj">
+               BuildableName = "MonteOfficeTests.xctest"
+               BlueprintName = "MonteOfficeTests"
+               ReferencedContainer = "container:MonteOffice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "ReactMobxTestTests.xctest"
-               BlueprintName = "ReactMobxTestTests"
-               ReferencedContainer = "container:ReactMobxTest.xcodeproj">
+               BuildableName = "MonteOfficeTests.xctest"
+               BlueprintName = "MonteOfficeTests"
+               ReferencedContainer = "container:MonteOffice.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactMobxTest.app"
-            BlueprintName = "ReactMobxTest"
-            ReferencedContainer = "container:ReactMobxTest.xcodeproj">
+            BuildableName = "MonteOffice.app"
+            BlueprintName = "MonteOffice"
+            ReferencedContainer = "container:MonteOffice.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactMobxTest.app"
-            BlueprintName = "ReactMobxTest"
-            ReferencedContainer = "container:ReactMobxTest.xcodeproj">
+            BuildableName = "MonteOffice.app"
+            BlueprintName = "MonteOffice"
+            ReferencedContainer = "container:MonteOffice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "ReactMobxTest.app"
-            BlueprintName = "ReactMobxTest"
-            ReferencedContainer = "container:ReactMobxTest.xcodeproj">
+            BuildableName = "MonteOffice.app"
+            BlueprintName = "MonteOffice"
+            ReferencedContainer = "container:MonteOffice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

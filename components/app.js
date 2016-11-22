@@ -4,7 +4,7 @@ import router from "../stores/router"
 import monte_theme from "../themes/monte_theme"
 
 @observer
-export default class ReactMobxTest extends Component {
+export default class MonteOffice extends Component {
     render() {
         const CurrentRoute = router.currentComponent
         return (
