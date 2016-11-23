@@ -34,7 +34,7 @@ export default class NowPlaying extends Component {
                         </CardItem>
 
                         <CardItem>
-                            <Spinner color="blue"/>
+                            <Spinner color="#f95346"/>
                         </CardItem>
                       </View>
                     }

@@ -25,7 +25,7 @@ export default class ImagesSearch extends Component {
 
                   { screensStore.isWorking &&
                     <Button transparent>
-                        <Spinner color="blue"/>
+                        <Spinner color="white"/>
                     </Button>
                   }
               </NativeBase.Header>

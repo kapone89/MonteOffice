@@ -23,7 +23,7 @@ export default class StreamsSearch extends Component {
 
                   { streamsStore.isWorking &&
                     <Button transparent>
-                        <Spinner color="blue"/>
+                        <Spinner color="white"/>
                     </Button>
                   }
               </NativeBase.Header>

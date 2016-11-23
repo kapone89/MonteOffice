@@ -34,8 +34,9 @@ export default class Stream {
         volume: 80,
         address: streamUrl,
       })
+
+    })
       .catch(() => {})
-    });
   }
 
   playRadiosure(radiosurePage) {
