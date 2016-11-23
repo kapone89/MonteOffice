@@ -112,22 +112,15 @@ export default {
     tabBarActiveTextColor: '#007aff',
     tabActiveBgColor: '#cde1f9',
 
-    //Tab
-    tabDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#4179F7',
-    topTabBarTextColor: (Platform.OS === 'ios' ) ? '#6b6b6b' : '#b3c7f9',
-    topTabBarActiveTextColor: (Platform.OS === 'ios' ) ? '#007aff' : '#fff',
-    topTabActiveBgColor: (Platform.OS=='ios') ? '#cde1f9' : undefined,
-    topTabBarBorderColor: (Platform.OS === 'ios' ) ? '#007aff' : '#fff',
-
 
     // Header
-    iosToolbarBtnColor: '#007aff',
-    toolbarDefaultBg: (Platform.OS === 'ios' ) ? '#F8F8F8' : '#4179F7',
+    iosToolbarBtnColor: '#ffffff',
+    toolbarDefaultBg: '#f95346',
     toolbarHeight: (Platform.OS === 'ios' ) ? 64 : 56,
     toolbarIconSize: (Platform.OS === 'ios' ) ? 20 : 22,
     toolbarInputColor: '#CECDD2',
     toolbarInverseBg: '#222',
-    toolbarTextColor: (Platform.OS==='ios') ? '#000' : '#fff',
+    toolbarTextColor: '#fff',
     get statusBarColor() {
         return Color(this.toolbarDefaultBg).darken(0.2).hexString();
     },
@@ -174,7 +167,7 @@ export default {
     listBorderColor: '#ddd',
     listDividerBg: '#ddd',
     listItemHeight: 45,
-    listItemPadding: (Platform.OS === 'ios' ) ? 12 : 16,
+    listItemPadding: 9,
     listNoteColor: '#808080',
     listNoteSize: 13,
 
@@ -201,7 +194,7 @@ export default {
     // Tabs
     tabBgColor: '#F8F8F8',
     tabFontSize: 15,
-    tabTextColor: '#222222',
+    tabTextColor: '#fff',
 
 
     // Text
