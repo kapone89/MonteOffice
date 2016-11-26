@@ -22,6 +22,10 @@ export default class IosTabs extends Component {
                 Screens
                 <Icon name='ios-desktop' />
             </Button>
+            <Button onPress={() => { router.go("/lights_switcher") }}>
+                Lights
+                <Icon name='ios-flash' />
+            </Button>
           </FooterTab>
         );
       }
