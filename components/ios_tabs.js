@@ -11,12 +11,8 @@ export default class IosTabs extends Component {
         return (
           <FooterTab>
             <Button onPress={() => { router.go("/") }}>
-                Now playing
-                <Icon name='ios-play' />
-            </Button>
-            <Button onPress={() => { router.go("/predefined_streams") }}>
-                Streams
-                <Icon name='ios-search' />
+                Toilet
+                <Icon name='ios-musical-notes' />
             </Button>
             <Button onPress={() => { router.go("/predefined_screens") }}>
                 Screens
@@ -25,6 +21,10 @@ export default class IosTabs extends Component {
             <Button onPress={() => { router.go("/lights_switcher") }}>
                 Lights
                 <Icon name='ios-flash' />
+            </Button>
+            <Button onPress={() => { router.go("/rooms_status") }}>
+                Rooms
+                <Icon name='ios-contacts' />
             </Button>
           </FooterTab>
         );

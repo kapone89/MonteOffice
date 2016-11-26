@@ -3,8 +3,10 @@ import { View } from "react-native"
 import { observer } from "mobx-react/native"
 import NativeBase, { Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon } from 'native-base';
 import { Range, H1, H4 } from 'carbon-native';
+import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
 import nowPlayingStore from "../stores/now_playing_store"
+import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
 
 @observer
@@ -20,8 +22,8 @@ export default class NowPlaying extends Component {
 
                   <Title>Now playing</Title>
 
-                  <Button transparent onPress={() => { nowPlayingStore.reload() }}>
-                      <Icon name="ios-refresh" />
+                  <Button transparent onPress={() => { router.go("/streams_search") }}>
+                      <Icon name="ios-search" />
                   </Button>
               </NativeBase.Header>
 
@@ -60,6 +62,28 @@ export default class NowPlaying extends Component {
                               value={nowPlayingStore.volume / 100}
                             />
                         </CardItem>
+
+                        <CardItem header>
+                            <Text>Predefined streams</Text>
+                        </CardItem>
+
+                        <List>
+                          {
+                            streamsStore.predefined.map((stream) => {
+                              return (
+                                <Item key={stream.id} onPress={() => { stream.play() }}>
+                                  <ItemIcon>
+                                    <Icon name="ios-play"/>
+                                  </ItemIcon>
+                                  <ItemContent>
+                                    <ItemText>{stream.name}</ItemText>
+                                    <Note>{stream.genre}</Note>
+                                  </ItemContent>
+                                </Item>
+                              )
+                            })
+                          }
+                        </List>
                       </View>
                     }
                </Card>
