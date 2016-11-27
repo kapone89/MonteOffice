@@ -9,17 +9,18 @@ class LightsStore {
   @observable lights = [];
   @observable isWorking = false;
 
-  reload() {
-    this.isWorking = true
-    fetch('http://172.20.0.29:8080/lights')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.lights = responseJson.map((light) => {
-          return new Light({id: light.id, description: light.description, state: light.state})
-        })
-        this.isWorking = false
+  async reload() {
+    try {
+      this.isWorking = true
+      var response = await fetch('http://172.20.0.29:8080/lights')
+      var responseJson = await response.json()
+      this.lights = responseJson.map((light) => {
+        return new Light({id: light.id, description: light.description, state: light.state})
       })
-      .catch(() => {})
+      this.isWorking = false
+    } catch (e) {
+      this.isWorking = false
+    }
   }
 }
 

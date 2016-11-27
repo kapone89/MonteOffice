@@ -12,28 +12,32 @@ class NowPlayingStore {
     this.volumeChangePromise = null
   }
 
-  reload() {
-    this.isWorking = true
-    fetch('http://172.20.0.35:8080/')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.nowPlayingUrl = responseJson.address;
-        this.volume = responseJson.volume;
-        this.fetchStreamMeta();
-      })
-      .catch(() => {})
+  async reload() {
+    try {
+      this.isWorking = true
+      var response = await fetch('http://172.20.0.35:8080/')
+      var responseJson = await response.json()
+      this.nowPlayingUrl = responseJson.address;
+      this.volume = responseJson.volume;
+      this.nowPlayingName = await this.fetchStreamMeta(responseJson.address)
+      this.isWorking = false
+    } catch (e) {
+      this.isWorking = false
+    }
   }
 
-  fetchStreamMeta() {
-    this.streamDataTmp = new XMLHttpRequest();
-    this.streamDataTmp.open('GET', this.nowPlayingUrl);
-    this.streamDataTmp.send()
-    setTimeout(() => {
-      var name = this.streamDataTmp.getResponseHeader("icy-name");
-      this.nowPlayingName = name ? name : "File"
-      this.streamDataTmp.abort()
-      this.isWorking = false
-    }, 500);
+  fetchStreamMeta(address) {
+    return new Promise((resolve, reject) => {
+      this.streamDataTmp = new XMLHttpRequest();
+      this.streamDataTmp.open('GET', address);
+      this.streamDataTmp.send()
+      setTimeout(() => {
+        var name = this.streamDataTmp.getResponseHeader("icy-name");
+        var result = name ? name : "File"
+        this.streamDataTmp.abort()
+        resolve(result)
+      }, 500);
+    })
   }
 
   changeVolume(newVolume) {

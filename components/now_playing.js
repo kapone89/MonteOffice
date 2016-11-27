@@ -62,30 +62,32 @@ export default class NowPlaying extends Component {
                               value={nowPlayingStore.volume / 100}
                             />
                         </CardItem>
-
-                        <CardItem header>
-                            <Text>Predefined streams</Text>
-                        </CardItem>
-
-                        <List>
-                          {
-                            streamsStore.predefined.map((stream) => {
-                              return (
-                                <Item key={stream.id} onPress={() => { stream.play() }}>
-                                  <ItemIcon>
-                                    <Icon name="ios-play"/>
-                                  </ItemIcon>
-                                  <ItemContent>
-                                    <ItemText>{stream.name}</ItemText>
-                                    <Note>{stream.genre}</Note>
-                                  </ItemContent>
-                                </Item>
-                              )
-                            })
-                          }
-                        </List>
                       </View>
                     }
+
+                    <View>
+                      <CardItem header>
+                          <Text>Predefined streams</Text>
+                      </CardItem>
+
+                      <List>
+                        {
+                          streamsStore.predefined.map((stream) => {
+                            return (
+                              <Item key={stream.id} onPress={() => { stream.play() }}>
+                                <ItemIcon>
+                                  <Icon name="ios-play"/>
+                                </ItemIcon>
+                                <ItemContent>
+                                  <ItemText>{stream.name}</ItemText>
+                                  <Note>{stream.genre}</Note>
+                                </ItemContent>
+                              </Item>
+                            )
+                          })
+                        }
+                      </List>
+                    </View>
                </Card>
               </NativeBase.Content>
 
