@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { WebView, TouchableOpacity, View } from "react-native"
 import { observer } from "mobx-react/native"
-import NativeBase, { Button, Icon, Title, List, ListItem, Text, Spinner } from 'native-base';
+import NativeBase, { Button, Icon, Title, List, ListItem, Text, Spinner, Input } from 'native-base';
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import screensStore from "../stores/screens_store"
@@ -16,25 +16,23 @@ export default class ImagesSearch extends Component {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
         return (
           <NativeBase.Container theme={this.props.theme}>
-              <NativeBase.Header>
-                  <Button transparent onPress={() => { router.back() }}>
-                      <Icon name='ios-arrow-back' />
-                  </Button>
-
-                  <Title>Find GIF</Title>
-
-                  { screensStore.isWorking &&
-                    <Button transparent>
-                        <Spinner color="white"/>
-                    </Button>
-                  }
+              <NativeBase.Header searchBar rounded>
+                <NativeBase.InputGroup>
+                    <Icon name="ios-search" />
+                    <Input placeholder="Find GIFs online" onChangeText={(x) => screensStore.search(x)} />
+                </NativeBase.InputGroup>
+                <Button transparent onPress={() => { router.back() }}>
+                    Back
+                </Button>
               </NativeBase.Header>
 
               <NativeBase.Content>
-                <SearchBar lightTheme onChangeText={(x) => screensStore.search(x)} />
+                {
+                  screensStore.isWorking && <Spinner color="#f95346"/>
+                }
 
                 {
-                  lodash.chunk(screensStore.searchResults, 3).map((chunk) => {
+                  !screensStore.isWorking && lodash.chunk(screensStore.searchResults, 3).map((chunk) => {
                     return (
                       <View key={chunk[0].id} style={{flex: 1, flexDirection: 'row'}}>
                         {

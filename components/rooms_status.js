@@ -33,18 +33,15 @@ export default class RoomsStatus extends Component {
               </Button>
 
               <Title>Rooms status</Title>
-
-              { roomsStore.isWorking &&
-                <Button transparent>
-                    <Spinner color="white"/>
-                </Button>
-              }
           </NativeBase.Header>
 
           <NativeBase.Content>
+            {
+              roomsStore.isWorking && <Spinner color="#f95346"/>
+            }
             <View style={{marginTop: 10}}>
               {
-                roomsStore.rooms.map((room) => {
+                !roomsStore.isWorking && roomsStore.rooms.map((room) => {
                   return (
                     <RNE.Button
                       key={room.id}

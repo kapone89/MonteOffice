@@ -17,32 +17,38 @@ export default class StreamsSearch extends Component {
               <NativeBase.Header searchBar rounded>
                 <NativeBase.InputGroup>
                     <Icon name="ios-search" />
-                    <Input placeholder="Search" onChangeText={(x) => streamsStore.search(x)} />
+                    <Input placeholder="Find radio online" onChangeText={(x) => streamsStore.search(x)} />
                     <Icon name="ios-musical-notes" />
                 </NativeBase.InputGroup>
-                <Button transparent>
-                    Search
+                <Button transparent onPress={() => { router.back() }}>
+                    Back
                 </Button>
               </NativeBase.Header>
 
               <NativeBase.Content>
-                <List>
-                  {
-                    streamsStore.searchResults.map((stream) => {
-                      return (
-                        <Item key={stream.id} onPress={() => { stream.play() }}>
-                          <ItemIcon>
-                            <Icon name="ios-play"/>
-                          </ItemIcon>
-                          <ItemContent>
-                            <ItemText>{stream.name}</ItemText>
-                            <Note>{stream.genre}</Note>
-                          </ItemContent>
-                        </Item>
-                      )
-                    })
-                  }
-                </List>
+                {
+                  streamsStore.isWorking && <Spinner color="#f95346"/>
+                }
+
+                {
+                  !streamsStore.isWorking && <List>
+                    {
+                      streamsStore.searchResults.map((stream) => {
+                        return (
+                          <Item key={stream.id} onPress={() => { stream.play() }}>
+                            <ItemIcon>
+                              <Icon name="ios-play"/>
+                            </ItemIcon>
+                            <ItemContent>
+                              <ItemText>{stream.name}</ItemText>
+                              <Note>{stream.genre}</Note>
+                            </ItemContent>
+                          </Item>
+                        )
+                      })
+                    }
+                  </List>
+                }
               </NativeBase.Content>
 
               <NativeBase.Footer >
