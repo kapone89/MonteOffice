@@ -14,23 +14,18 @@ export default class StreamsSearch extends Component {
     render() {
         return (
           <NativeBase.Container theme={this.props.theme}>
-              <NativeBase.Header>
-                  <Button transparent onPress={() => { router.back() }}>
-                      <Icon name='ios-arrow-back' />
-                  </Button>
-
-                  <Title>Search streams</Title>
-
-                  { streamsStore.isWorking &&
-                    <Button transparent>
-                        <Spinner color="white"/>
-                    </Button>
-                  }
+              <NativeBase.Header searchBar rounded>
+                <NativeBase.InputGroup>
+                    <Icon name="ios-search" />
+                    <Input placeholder="Search" onChangeText={(x) => streamsStore.search(x)} />
+                    <Icon name="ios-musical-notes" />
+                </NativeBase.InputGroup>
+                <Button transparent>
+                    Search
+                </Button>
               </NativeBase.Header>
 
               <NativeBase.Content>
-                <SearchBar lightTheme onChangeText={(x) => streamsStore.search(x)} />
-
                 <List>
                   {
                     streamsStore.searchResults.map((stream) => {
