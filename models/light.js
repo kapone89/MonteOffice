@@ -15,12 +15,13 @@ export default class Light {
     try {
       this.state = !this.state;
       await fetch('http://172.20.0.29:8080/toggle/' + this.id)
-      await this.reloadState()
+      // await this.reloadState()
     } catch (e) {
       console.log(e);
     }
   }
 
+  // doesn't work. maybe request is too quick
   async reloadState() {
     try {
       var response = await fetch('http://172.20.0.29:8080/lights')
