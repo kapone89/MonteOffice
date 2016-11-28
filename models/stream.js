@@ -36,7 +36,9 @@ export default class Stream {
           address: streamUrl,
         })
       })
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async playRadiosure(radiosurePage) {
@@ -47,7 +49,9 @@ export default class Stream {
       var nodes = select("//tr[contains(.//td, 'Source ')]//a", doc);
       var streamUrls = lodash.map(nodes, "textContent").filter((x) => {return x.length > 4})
       await this.autoChooseStream(streamUrls)
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async autoChooseStream(streamsArray) {

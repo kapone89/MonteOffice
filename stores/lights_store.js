@@ -20,6 +20,7 @@ class LightsStore {
       this.isWorking = false
     } catch (e) {
       this.isWorking = false
+      console.log(e);
     }
   }
 
@@ -28,7 +29,7 @@ class LightsStore {
   }
 
   async turnOnCommon() {
-    
+
   }
 }
 

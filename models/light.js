@@ -16,7 +16,9 @@ export default class Light {
       this.state = !this.state;
       await fetch('http://172.20.0.29:8080/toggle/' + this.id)
       await this.reloadState()
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async reloadState() {
@@ -24,6 +26,8 @@ export default class Light {
       var response = await fetch('http://172.20.0.29:8080/lights')
       var responseJson = await response.json()
       this.state = lodash.find(responseJson, {id: this.id}).state;
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

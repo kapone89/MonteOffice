@@ -24,12 +24,16 @@ export default class Screen {
         })
       })
       await this.refreshOnTv(tvNo)
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async refreshOnTv(tvNo) {
     try {
       await fetch('http://172.20.0.29:8080/tv-reload/' + tvNo)
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 }

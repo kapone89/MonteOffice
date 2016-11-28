@@ -34,6 +34,7 @@ class StreamsStore {
       this.isWorking = false
     } catch (e) {
       this.isWorking = false
+      console.log(e);
     }
   }
 

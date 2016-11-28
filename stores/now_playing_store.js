@@ -22,6 +22,7 @@ class NowPlayingStore {
       this.isWorking = false
     } catch (e) {
       this.isWorking = false
+      console.log(e);
     }
   }
 
@@ -52,7 +53,9 @@ class NowPlayingStore {
           address: this.nowPlayingUrl,
         })
       })
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }
 
 
