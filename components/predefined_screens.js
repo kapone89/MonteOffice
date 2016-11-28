@@ -8,15 +8,6 @@ import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
 import screensStore from "../stores/screens_store"
 
-predefined = [
-  { name: "wifi credentials", url: "http://freakone.pl/monte/wifi.html" },
-  { name: "instafeed", url: "http://freakone.pl/monte/4.html" },
-  { name: "monte logo", url: "http://jsbin.com/wokovo" },
-  { name: "Classic Programmers Paintings", url: "http://cpp.kapone89.ml" },
-  { name: "Sample GIF 1", url: "http://max.kapone89.ml#https://thumbs.gfycat.com/EnchantingHiddenAmethystsunbird-size_restricted.gif" },
-  { name: "Sample GIF 2", url: "http://max.kapone89.ml/#http://i.imgur.com/132B17l.gif" },
-]
-
 @observer
 export default class PredefinedScreens extends Component {
     render() {

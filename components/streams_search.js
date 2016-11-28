@@ -11,13 +11,20 @@ import router from "../stores/router"
 
 @observer
 export default class StreamsSearch extends Component {
+    searchStreamsDelayed(query) {
+      clearTimeout(this.streamsSearchTimeout);
+      this.streamsSearchTimeout = setTimeout(() => {
+        streamsStore.search(query)
+      }, 1000);
+    }
+
     render() {
         return (
           <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header searchBar rounded>
                 <NativeBase.InputGroup>
                     <Icon name="ios-search" />
-                    <Input placeholder="Find radio online" onChangeText={(x) => streamsStore.search(x)} />
+                    <Input placeholder="Find radio online" onChangeText={(x) => this.searchStreamsDelayed(x)} />
                     <Icon name="ios-musical-notes" />
                 </NativeBase.InputGroup>
                 <Button transparent onPress={() => { router.back() }}>

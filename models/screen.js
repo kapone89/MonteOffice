@@ -11,25 +11,25 @@ export default class Screen {
     this.thumb = params.thumb;
   }
 
-  setOnTv(tvNo) {
-    fetch('http://172.20.0.29:8080/tv/' + tvNo, {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        url: this.website,
+  async setOnTv(tvNo) {
+    try {
+      await fetch('http://172.20.0.29:8080/tv/' + tvNo, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: this.website,
+        })
       })
-    })
-      .then((response) => {
-        this.refreshOnTv(tvNo)
-      })
-      .catch(() => {})
+      await this.refreshOnTv(tvNo)
+    } catch (e) {}
   }
 
-  refreshOnTv(tvNo) {
-    fetch('http://172.20.0.29:8080/tv-reload/' + tvNo)
-      .catch(() => {})
+  async refreshOnTv(tvNo) {
+    try {
+      await fetch('http://172.20.0.29:8080/tv-reload/' + tvNo)
+    } catch (e) {}
   }
 }

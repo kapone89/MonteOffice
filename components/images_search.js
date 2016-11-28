@@ -12,6 +12,13 @@ import router from "../stores/router"
 
 @observer
 export default class ImagesSearch extends Component {
+    searchImagesDelayed(query) {
+      clearTimeout(this.imagesSearchTimeout);
+      this.imagesSearchTimeout = setTimeout(() => {
+        screensStore.search(query)
+      }, 1000);
+    }
+
     render() {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
         return (
@@ -19,7 +26,7 @@ export default class ImagesSearch extends Component {
               <NativeBase.Header searchBar rounded>
                 <NativeBase.InputGroup>
                     <Icon name="ios-search" />
-                    <Input placeholder="Find GIFs online" onChangeText={(x) => screensStore.search(x)} />
+                    <Input placeholder="Find GIFs online" onChangeText={(x) => this.searchImagesDelayed(x)} />
                 </NativeBase.InputGroup>
                 <Button transparent onPress={() => { router.back() }}>
                     Back

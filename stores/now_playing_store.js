@@ -9,7 +9,6 @@ class NowPlayingStore {
 
   constructor() {
     this.streamDataTmp = null;
-    this.volumeChangePromise = null
   }
 
   async reload() {
@@ -40,10 +39,9 @@ class NowPlayingStore {
     })
   }
 
-  changeVolume(newVolume) {
-    clearTimeout(this.volumeChangePromise);
-    this.volumeChangePromise = setTimeout(() => {
-      fetch('http://172.20.0.35:8080/', {
+  async changeVolume(newVolume) {
+    try {
+      await fetch('http://172.20.0.35:8080/', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -54,8 +52,7 @@ class NowPlayingStore {
           address: this.nowPlayingUrl,
         })
       })
-        .catch(() => {})
-    }, 1000);
+    } catch (e) {}
   }
 
 

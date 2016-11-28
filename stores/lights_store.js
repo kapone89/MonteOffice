@@ -22,6 +22,14 @@ class LightsStore {
       this.isWorking = false
     }
   }
+
+  async turnOffAll() {
+
+  }
+
+  async turnOnCommon() {
+    
+  }
 }
 
 const lightsStore = new LightsStore();

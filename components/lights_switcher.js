@@ -34,10 +34,10 @@ export default class LightsSwitcher extends Component {
             <Grid style={{marginTop: 10, marginBottom: 15}}>
               <Row>
                 <Col>
-                  <RNE.Button small borderRadius={5} backgroundColor="#2ECC40" title="Turn ON all" onPress={() => {}} />
+                  <RNE.Button small borderRadius={5} backgroundColor="#2ECC40" title="Turn ON common" onPress={() => lightsStore.turnOnCommon()} />
                 </Col>
                 <Col>
-                  <RNE.Button small borderRadius={5} backgroundColor="#FF4136" title="Turn OFF all" onPress={() => {}} />
+                  <RNE.Button small borderRadius={5} backgroundColor="#FF4136" title="Turn OFF all" onPress={() => lightsStore.turnOffAll()} />
                 </Col>
               </Row>
             </Grid>

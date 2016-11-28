@@ -17,34 +17,19 @@ class ScreensStore {
       new Screen({id: 3, name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" }),
       new Screen({id: 4, name: "monte logo", website: "http://jsbin.com/wokovo" }),
     ]
-    this.imagesSearchPromise = null
   }
 
-  searchFake(query) {
-    this.searchResults = results.data.map((img) => {
-      return new Screen({
-        id: img.id,
-        name: img.slug,
-        thumb: img.images.downsized_medium.url,
-        website: `http://max.kapone89.ml/#${img.images.original.url}`,
-      });
-    })
-  }
-
-  search(query) {
-    this.isWorking = true
-    clearTimeout(this.imagesSearchPromise);
-    this.imagesSearchPromise = setTimeout(() => {
+  async search(query) {
+    try {
+      this.isWorking = true
       params = {q: query, api_key: "dc6zaTOxFJmzC"}
-      fetch('http://api.giphy.com/v1/gifs/search?' + stringify(params))
-        .then((response) => response.json())
-        .then((responseJson) => {
-          this.searchResults = this.parseGiphyResponse(responseJson)
-          this.isWorking = false
-        })
-        .catch(() => {})
-
-    }, 1000);
+      var response = await fetch('http://api.giphy.com/v1/gifs/search?' + stringify(params))
+      var responseJson = await response.json()
+      this.searchResults = this.parseGiphyResponse(responseJson)
+      this.isWorking = false
+    } catch (e) {
+      this.isWorking = false
+    }
   }
 
   parseGiphyResponse(data) {

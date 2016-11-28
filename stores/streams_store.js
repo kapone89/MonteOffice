@@ -16,13 +16,11 @@ class StreamsStore {
       new Stream({id: 1, name: "Yodeling", genre: "Funny", url: "https://dl.dropboxusercontent.com/s/mpht1mvcw8pxotl/National%20Switzerland%20%20Anthem-%20Yodeling.mp3"}),
       new Stream({id: 2, name: "Jazz24", genre: "Jazz", url: "http://icy1.abacast.com:80/kplu-jazz24aac-64"}),
     ];
-    this.streamSearchPromise = null
   }
 
-  search(query) {
-    this.isWorking = true
-    clearTimeout(this.streamSearchPromise);
-    this.streamSearchPromise = setTimeout(() => {
+  async search(query) {
+    try {
+      this.isWorking = true
       let params = {
         status: "active",
         search: query,
@@ -30,25 +28,26 @@ class StreamsStore {
         reset_pos: 0,
       }
 
-      fetch('http://www.radiosure.com/rsdbms/search.php?' + stringify(params))
-        .then((response) => response.text())
-        .then((responseText) => {
-          var doc = new DOMParser({errorHandler: {}}).parseFromString(responseText)
-          var nodes = select("//a[contains(@href, 'details.php')]", doc)
-          this.searchResults = nodes.map((n) => {
-            return new Stream({
-              id: n.attributes[0].nodeValue,
-              name: n.textContent,
-              genre: n.parentNode.parentNode.childNodes[3].textContent,
-              radiosure_page: ("http://www.radiosure.com/rsdbms/" + n.attributes[0].nodeValue),
-            })
-          })
-          this.isWorking = false
-        })
-        .catch(() => {})
+      var response = await fetch('http://www.radiosure.com/rsdbms/search.php?' + stringify(params))
+      var responseText = await response.text()
+      this.searchResults = this.parseRadiosureResponse(responseText)
+      this.isWorking = false
+    } catch (e) {
+      this.isWorking = false
+    }
+  }
 
-
-    }, 1000);
+  parseRadiosureResponse(response) {
+    var doc = new DOMParser({errorHandler: {}}).parseFromString(response)
+    var nodes = select("//a[contains(@href, 'details.php')]", doc)
+    return this.searchResults = nodes.map((n) => {
+      return new Stream({
+        id: n.attributes[0].nodeValue,
+        name: n.textContent,
+        genre: n.parentNode.parentNode.childNodes[3].textContent,
+        radiosure_page: ("http://www.radiosure.com/rsdbms/" + n.attributes[0].nodeValue),
+      })
+    })
   }
 }
 

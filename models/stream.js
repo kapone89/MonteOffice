@@ -15,62 +15,58 @@ export default class Stream {
     this.radiosure_page = params.radiosure_page;
   }
 
-  play() {
+  async play() {
     if (this.url) {
-      this.playUrl(this.url)
+      await this.playUrl(this.url)
     } else {
-      this.playRadiosure(this.radiosure_page)
+      await this.playRadiosure(this.radiosure_page)
     }
   }
 
-  playUrl(streamUrl) {
-    fetch('http://172.20.0.35:8080/', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        volume: 80,
-        address: streamUrl,
+  async playUrl(streamUrl) {
+    try {
+      await fetch('http://172.20.0.35:8080/', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          volume: 80,
+          address: streamUrl,
+        })
       })
-
-    })
-      .catch(() => {})
+    } catch (e) {}
   }
 
-  playRadiosure(radiosurePage) {
-    fetch(radiosurePage)
-    .then((response) => response.text())
-    .then((responseText) => {
+  async playRadiosure(radiosurePage) {
+    try {
+      var response = await fetch(radiosurePage)
+      var responseText = await response.text()
       var doc = new DOMParser({errorHandler: {}}).parseFromString(responseText);
       var nodes = select("//tr[contains(.//td, 'Source ')]//a", doc);
       var streamUrls = lodash.map(nodes, "textContent").filter((x) => {return x.length > 4})
-      this.autoChooseStream(streamUrls)
-    })
-    .catch(() => {})
+      await this.autoChooseStream(streamUrls)
+    } catch (e) {}
   }
 
-  autoChooseStream(streamsArray) {
-    this.playStream(lodash.sample(streamsArray));
+  async autoChooseStream(streamsArray) {
+    await this.playStream(lodash.sample(streamsArray));
   }
 
-  playStream(streamUrl) {
+  async playStream(streamUrl) {
     var isPlaylist = /\.(pls|m3u|asx)$/gi.exec(streamUrl)
     if (isPlaylist) {
-      this.playPlaylist(streamUrl, isPlaylist[1].toUpperCase())
+      await this.playPlaylist(streamUrl, isPlaylist[1].toUpperCase())
     } else {
-      this.playUrl(streamUrl)
+      await this.playUrl(streamUrl)
     }
   }
 
-  playPlaylist(streamUrl, type) {
-    fetch(streamUrl)
-    .then((response) => response.text())
-    .then((responseText) => {
-      var results = playlistParser[type].parse(responseText)
-      this.playUrl(lodash.sample(results).file);
-    })
-    .catch(() => {})
+  async playPlaylist(streamUrl, type) {
+    var response = await fetch(streamUrl);
+    var responseText = await response.text()
+    var results = playlistParser[type].parse(responseText)
+    await this.playUrl(lodash.sample(results).file);
   }
 }

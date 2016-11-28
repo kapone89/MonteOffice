@@ -1,5 +1,6 @@
 import { fetch } from "fetch";
 import { observable } from "mobx"
+import lodash from "lodash"
 
 export default class Light {
   @observable state = false;
@@ -10,21 +11,19 @@ export default class Light {
     this.state = params.state;
   }
 
-  toggle() {
-    this.state = !this.state;
-    fetch('http://172.20.0.29:8080/toggle/' + this.id)
-      .then((response) => {
-        this.reloadState()
-      })
-      .catch(() => {})
+  async toggle() {
+    try {
+      this.state = !this.state;
+      await fetch('http://172.20.0.29:8080/toggle/' + this.id)
+      await this.reloadState()
+    } catch (e) {}
   }
 
-  reloadState() {
-    fetch('http://172.20.0.29:8080/lights')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.state = lodash.find(responseJson, {id: this.id}).state;
-      })
-      .catch(() => {})
+  async reloadState() {
+    try {
+      var response = await fetch('http://172.20.0.29:8080/lights')
+      var responseJson = await response.json()
+      this.state = lodash.find(responseJson, {id: this.id}).state;
+    } catch (e) {}
   }
 }

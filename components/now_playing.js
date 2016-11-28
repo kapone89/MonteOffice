@@ -12,6 +12,14 @@ import router from "../stores/router"
 @observer
 export default class NowPlaying extends Component {
     componentDidMount() { nowPlayingStore.reload() }
+
+    changeVolumeDelayed(newVolume) {
+      clearTimeout(this.volumeChangeTimeout);
+      this.volumeChangeTimeout = setTimeout(() => {
+        nowPlayingStore.changeVolume(parseInt(newVolume * 10) * 10);
+      }, 1000);
+    }
+    
     render() {
         return (
           <NativeBase.Container theme={this.props.theme}>
@@ -58,7 +66,7 @@ export default class NowPlaying extends Component {
 
                         <CardItem>
                             <Range
-                              onValueChange={(v) => {nowPlayingStore.changeVolume(parseInt(v * 10) * 10)}}
+                              onValueChange={(v) => this.changeVolumeDelayed(v)}
                               value={nowPlayingStore.volume / 100}
                             />
                         </CardItem>
