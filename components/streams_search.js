@@ -7,6 +7,7 @@ import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
+import icon from '../services/icon'
 
 
 @observer
@@ -23,9 +24,9 @@ export default class StreamsSearch extends Component {
           <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header searchBar rounded>
                 <NativeBase.InputGroup>
-                    <Icon name="ios-search" />
+                    <Icon name={icon('search')} />
                     <Input placeholder="Find radio online" onChangeText={(x) => this.searchStreamsDelayed(x)} />
-                    <Icon name="ios-musical-notes" />
+                    <Icon name={icon('musical-notes')} />
                 </NativeBase.InputGroup>
                 <Button transparent onPress={() => { router.back() }}>
                     Back
@@ -44,7 +45,7 @@ export default class StreamsSearch extends Component {
                         return (
                           <Item key={stream.id} onPress={() => { stream.play() }}>
                             <ItemIcon>
-                              <Icon name="ios-play"/>
+                              <Icon name={icon('play')}/>
                             </ItemIcon>
                             <ItemContent>
                               <ItemText>{stream.name}</ItemText>

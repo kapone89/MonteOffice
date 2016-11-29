@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
 import { FooterTab, Button, Icon } from 'native-base';
 import router from '../stores/router';
+import icon from '../services/icon'
 
 // export default const IosTabs = withRouter((props) => {
 
@@ -12,19 +13,19 @@ export default class IosTabs extends Component {
           <FooterTab>
             <Button onPress={() => { router.go("/") }}>
                 Toilet
-                <Icon name='ios-musical-notes' />
+                <Icon name={icon('musical-notes')} />
             </Button>
             <Button onPress={() => { router.go("/predefined_screens") }}>
                 Screens
-                <Icon name='ios-desktop' />
+                <Icon name={icon('desktop')} />
             </Button>
             <Button onPress={() => { router.go("/lights_switcher") }}>
                 Lights
-                <Icon name='ios-flash' />
+                <Icon name={icon('flash')} />
             </Button>
             <Button onPress={() => { router.go("/rooms_status") }}>
                 Rooms
-                <Icon name='ios-contacts' />
+                <Icon name={icon('contacts')} />
             </Button>
           </FooterTab>
         );

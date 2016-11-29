@@ -8,6 +8,7 @@ import IosTabs from "./ios_tabs";
 import nowPlayingStore from "../stores/now_playing_store"
 import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
+import icon from '../services/icon'
 
 @observer
 export default class NowPlaying extends Component {
@@ -19,19 +20,19 @@ export default class NowPlaying extends Component {
         nowPlayingStore.changeVolume(parseInt(newVolume * 10) * 10);
       }, 1000);
     }
-    
+
     render() {
         return (
           <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header>
                   <Button transparent onPress={() => { router.back() }}>
-                      <Icon name='ios-arrow-back' />
+                      <Icon name={icon('arrow-back')} />
                   </Button>
 
                   <Title>Now playing</Title>
 
                   <Button transparent onPress={() => { router.go("/streams_search") }}>
-                      <Icon name="ios-search" />
+                      <Icon name={icon('search')} />
                   </Button>
               </NativeBase.Header>
 
@@ -84,7 +85,7 @@ export default class NowPlaying extends Component {
                             return (
                               <Item key={stream.id} onPress={() => { stream.play() }}>
                                 <ItemIcon>
-                                  <Icon name="ios-play"/>
+                                  <Icon name={icon('play')}/>
                                 </ItemIcon>
                                 <ItemContent>
                                   <ItemText>{stream.name}</ItemText>

@@ -7,6 +7,7 @@ import router from '../stores/router';
 import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
 import screensStore from "../stores/screens_store"
+import icon from '../services/icon'
 
 @observer
 export default class PredefinedScreens extends Component {
@@ -15,13 +16,13 @@ export default class PredefinedScreens extends Component {
           <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header>
                   <Button transparent onPress={() => { router.back() }}>
-                      <Icon name='ios-arrow-back' />
+                      <Icon name={icon('arrow-back')} />
                   </Button>
 
                   <Title>Predefined screens</Title>
 
                   <Button transparent onPress={() => { router.go("/images_search") }}>
-                      <Icon name="ios-search" />
+                      <Icon name={icon('search')} />
                   </Button>
               </NativeBase.Header>
 

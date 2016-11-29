@@ -7,6 +7,7 @@ import IosTabs from "./ios_tabs";
 import roomsStore from "../stores/rooms_store"
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
+import icon from '../services/icon'
 
 const rooms_colors = [
   "",
@@ -29,7 +30,7 @@ export default class RoomsStatus extends Component {
       <NativeBase.Container theme={this.props.theme}>
           <NativeBase.Header>
               <Button transparent onPress={() => { router.back() }}>
-                  <Icon name='ios-arrow-back' />
+                  <Icon name={icon('arrow-back')} />
               </Button>
 
               <Title>Rooms status</Title>

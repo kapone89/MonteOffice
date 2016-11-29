@@ -9,6 +9,7 @@ import ScreenThumbnail from "./screen_thumbnail"
 import Screen from "../models/screen"
 import lodash from "lodash"
 import router from "../stores/router"
+import icon from '../services/icon'
 
 @observer
 export default class ImagesSearch extends Component {
@@ -25,7 +26,7 @@ export default class ImagesSearch extends Component {
           <NativeBase.Container theme={this.props.theme}>
               <NativeBase.Header searchBar rounded>
                 <NativeBase.InputGroup>
-                    <Icon name="ios-search" />
+                    <Icon name={icon('search')} />
                     <Input placeholder="Find GIFs online" onChangeText={(x) => this.searchImagesDelayed(x)} />
                 </NativeBase.InputGroup>
                 <Button transparent onPress={() => { router.back() }}>

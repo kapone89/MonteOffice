@@ -6,6 +6,7 @@ import IosTabs from "./ios_tabs";
 import lightsStore from "../stores/lights_store"
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
+import icon from '../services/icon'
 
 @observer
 export default class LightsSwitcher extends Component {
@@ -18,7 +19,7 @@ export default class LightsSwitcher extends Component {
       <NativeBase.Container theme={this.props.theme}>
           <NativeBase.Header>
               <Button transparent onPress={() => { router.back() }}>
-                  <Icon name='ios-arrow-back' />
+                  <Icon name={icon('arrow-back')} />
               </Button>
 
               <Title>Lights</Title>

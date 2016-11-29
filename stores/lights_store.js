@@ -25,11 +25,26 @@ class LightsStore {
   }
 
   async turnOffAll() {
-
+    try {
+      await fetch('http://172.20.0.29:8080/turn_off')
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async turnOnCommon() {
-
+    try {
+      var common = [23, 8, 6, 5, 24, 25, 9, 4, 10];
+      await this.reload()
+      var turnedOff = lodash.reject(this.lights, "state")
+      for (let light of turnedOff) {
+        if (lodash.includes(common, light.id)) {
+          await fetch('http://172.20.0.29:8080/toggle/' + light.id)
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
