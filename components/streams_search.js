@@ -33,7 +33,7 @@ export default class StreamsSearch extends Component {
                 </Button>
               </NativeBase.Header>
 
-              <NativeBase.Content>
+              <NativeBase.Content keyboardShouldPersistTaps={true}>
                 {
                   streamsStore.isWorking && <Spinner color="#f95346"/>
                 }

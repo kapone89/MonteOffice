@@ -34,7 +34,7 @@ export default class ImagesSearch extends Component {
                 </Button>
               </NativeBase.Header>
 
-              <NativeBase.Content>
+              <NativeBase.Content keyboardShouldPersistTaps={true}>
                 {
                   screensStore.isWorking && <Spinner color="#f95346"/>
                 }
