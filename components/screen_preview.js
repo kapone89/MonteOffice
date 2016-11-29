@@ -36,10 +36,10 @@ export default class ScreenPreview extends Component {
                   </Row>
                   <Row>
                     <Col>
-                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #3" onPress={() => {screensStore.chosenScreen.setOnTv(3)}} />
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #3" onPress={() => {screensStore.chosenScreen.setOnTv(4)}} />
                     </Col>
                     <Col>
-                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #4" onPress={() => {screensStore.chosenScreen.setOnTv(4)}} />
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #4" onPress={() => {screensStore.chosenScreen.setOnTv(3)}} />
                     </Col>
                   </Row>
                   <Row>

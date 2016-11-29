@@ -3,7 +3,7 @@ import { fetch } from "fetch";
 import { observable } from "mobx"
 import { stringify } from 'query-string';
 import Light from "../models/light"
-
+import Toast from 'react-native-simple-toast';
 
 class LightsStore {
   @observable lights = [];
@@ -25,14 +25,17 @@ class LightsStore {
   }
 
   async turnOffAll() {
+    Toast.show('Wait...');
     try {
       await fetch('http://172.20.0.29:8080/turn_off')
+      Toast.show('Done!');
     } catch (e) {
       console.log(e);
     }
   }
 
   async turnOnCommon() {
+    Toast.show('Wait...');
     try {
       var common = [23, 8, 6, 5, 24, 25, 9, 4, 10];
       await this.reload()
@@ -42,6 +45,7 @@ class LightsStore {
           await fetch('http://172.20.0.29:8080/toggle/' + light.id)
         }
       }
+      Toast.show('Done!');
     } catch (e) {
       console.log(e);
     }

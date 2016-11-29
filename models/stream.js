@@ -4,7 +4,7 @@ import { DOMParser } from 'xmldom';
 import { select } from 'xpath';
 import { stringify } from 'query-string';
 import playlistParser from "playlist-parser"
-
+import Toast from 'react-native-simple-toast';
 
 export default class Stream {
   constructor(params) {
@@ -16,6 +16,7 @@ export default class Stream {
   }
 
   async play() {
+    Toast.show('Wait...');
     if (this.url) {
       await this.playUrl(this.url)
     } else {
@@ -36,6 +37,7 @@ export default class Stream {
           address: streamUrl,
         })
       })
+      Toast.show('Done!');
     } catch (e) {
       console.log(e);
     }

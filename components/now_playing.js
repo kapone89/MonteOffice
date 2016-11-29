@@ -83,7 +83,7 @@ export default class NowPlaying extends Component {
                         {
                           streamsStore.predefined.map((stream) => {
                             return (
-                              <Item key={stream.id} onPress={() => { stream.play() }}>
+                              <Item key={stream.id} onPress={ async function() { await stream.play(); await nowPlayingStore.reload() }}>
                                 <ItemIcon>
                                   <Icon name={icon('play')}/>
                                 </ItemIcon>
