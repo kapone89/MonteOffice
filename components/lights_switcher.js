@@ -7,11 +7,24 @@ import lightsStore from "../stores/lights_store"
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
+import Toast from 'react-native-simple-toast';
 
 @observer
 export default class LightsSwitcher extends Component {
   componentDidMount(){
     lightsStore.reload()
+  }
+
+  async turnOnCommon() {
+    Toast.show('Wait...');
+    await lightsStore.turnOnCommon()
+    Toast.show('Done!');
+  }
+
+  async turnOffAll() {
+    Toast.show('Wait...');
+    await lightsStore.turnOffAll()
+    Toast.show('Done!');
   }
 
   render(){
@@ -35,10 +48,10 @@ export default class LightsSwitcher extends Component {
             <Grid style={{marginTop: 10, marginBottom: 15}}>
               <Row>
                 <Col>
-                  <RNE.Button small borderRadius={5} backgroundColor="#2ECC40" title="Turn ON common" onPress={() => lightsStore.turnOnCommon()} />
+                  <RNE.Button small borderRadius={5} backgroundColor="#2ECC40" title="Turn ON common" onPress={this.turnOnCommon} />
                 </Col>
                 <Col>
-                  <RNE.Button small borderRadius={5} backgroundColor="#FF4136" title="Turn OFF all" onPress={() => lightsStore.turnOffAll()} />
+                  <RNE.Button small borderRadius={5} backgroundColor="#FF4136" title="Turn OFF all" onPress={this.turnOffAll} />
                 </Col>
               </Row>
             </Grid>

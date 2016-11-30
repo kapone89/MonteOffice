@@ -9,6 +9,7 @@ import nowPlayingStore from "../stores/now_playing_store"
 import streamsStore from "../stores/streams_store"
 import router from "../stores/router"
 import icon from '../services/icon'
+import Toast from 'react-native-simple-toast';
 
 @observer
 export default class NowPlaying extends Component {
@@ -19,6 +20,13 @@ export default class NowPlaying extends Component {
       this.volumeChangeTimeout = setTimeout(() => {
         nowPlayingStore.changeVolume(parseInt(newVolume * 10) * 10);
       }, 1000);
+    }
+
+    async playPredefined(stream) {
+      Toast.show('Wait...');
+      await stream.play();
+      Toast.show('Done!');
+      await nowPlayingStore.reload()
     }
 
     render() {
@@ -83,7 +91,7 @@ export default class NowPlaying extends Component {
                         {
                           streamsStore.predefined.map((stream) => {
                             return (
-                              <Item key={stream.id} onPress={ async function() { await stream.play(); await nowPlayingStore.reload() }}>
+                              <Item key={stream.id} onPress={() => this.playPredefined(stream)}>
                                 <ItemIcon>
                                   <Icon name={icon('play')}/>
                                 </ItemIcon>

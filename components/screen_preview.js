@@ -8,9 +8,16 @@ import screensStore from "../stores/screens_store"
 import RNE from 'react-native-elements'
 import router from "../stores/router"
 import icon from '../services/icon'
+import Toast from 'react-native-simple-toast';
 
 @observer
 export default class ScreenPreview extends Component {
+    async setOnTv(tvNo) {
+      Toast.show('Wait...');
+      await screensStore.chosenScreen.setOnTv(tvNo)
+      Toast.show('Done!');
+    }
+
     render() {
         return (
           <NativeBase.Container theme={this.props.theme}>
@@ -28,23 +35,23 @@ export default class ScreenPreview extends Component {
                 <Grid style={{marginTop: 10, height: 170}}>
                   <Row>
                     <Col>
-                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #1" onPress={() => {screensStore.chosenScreen.setOnTv(1)}} />
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #1" onPress={() => {this.setOnTv(1)}} />
                     </Col>
                     <Col>
-                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #2" onPress={() => {screensStore.chosenScreen.setOnTv(2)}} />
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col>
-                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #3" onPress={() => {screensStore.chosenScreen.setOnTv(4)}} />
-                    </Col>
-                    <Col>
-                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #4" onPress={() => {screensStore.chosenScreen.setOnTv(3)}} />
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #2" onPress={() => {this.setOnTv(2)}} />
                     </Col>
                   </Row>
                   <Row>
                     <Col>
-                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="The BIG one" onPress={() => {screensStore.chosenScreen.setOnTv(5)}} />
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #3" onPress={() => {this.setOnTv(4)}} />
+                    </Col>
+                    <Col>
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="Screen #4" onPress={() => {this.setOnTv(3)}} />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <RNE.Button small borderRadius={5} backgroundColor="#1ec08b" title="The BIG one" onPress={() => {this.setOnTv(5)}} />
                     </Col>
                   </Row>
                 </Grid>
