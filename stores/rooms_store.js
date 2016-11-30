@@ -1,11 +1,19 @@
 import lodash from "lodash"
 import { fetch } from "fetch";
-import { observable } from "mobx"
+import { observable, computed } from "mobx"
 import Room from "../models/room"
 
 class RoomsStore {
   @observable rooms = [];
   @observable isWorking = false;
+
+  @computed get availableRooms() {
+    return lodash.reject(this.rooms, "occupied")
+  }
+
+  @computed get occupiedRooms() {
+    return lodash.filter(this.rooms, "occupied")
+  }
 
   async reload() {
     try {
