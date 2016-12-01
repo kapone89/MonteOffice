@@ -4,8 +4,6 @@ import { FooterTab, Button, Icon } from 'native-base';
 import router from '../stores/router';
 import icon from '../services/icon'
 
-// export default const IosTabs = withRouter((props) => {
-
 @observer
 export default class IosTabs extends Component {
     render() {
