@@ -26,8 +26,9 @@ export default class RoomsStatus extends Component {
     roomsStore.reload()
   }
 
-  onRoomClick() {
-    Toast.show("I'm just a rectangle...");
+  onRoomClick(room) {
+    roomsStore.selectRoom(room)
+    router.go("/room_calendar")
   }
 
   render(){
@@ -39,6 +40,10 @@ export default class RoomsStatus extends Component {
               </Button>
 
               <Title>Rooms status</Title>
+
+              <Button transparent onPress={() => roomsStore.reload()} >
+                  <Icon name={icon('refresh')} />
+              </Button>
           </NativeBase.Header>
 
           <NativeBase.Content>
@@ -54,7 +59,7 @@ export default class RoomsStatus extends Component {
                 {
                   !roomsStore.isWorking && roomsStore.availableRooms.map((room) => {
                     return (
-                      <RNE.Button key={room.id} title={room.description} backgroundColor={rooms_colors[room.id]} onPress={this.onRoomClick}/>
+                      <RNE.Button key={room.id} title={room.description} backgroundColor={rooms_colors[room.id]} onPress={() => this.onRoomClick(room)}/>
                     )
                   })
                 }
@@ -75,12 +80,12 @@ export default class RoomsStatus extends Component {
                 {
                   !roomsStore.isWorking && roomsStore.occupiedRooms.map((room) => {
                     return (
-                      <RNE.Button key={room.id} title={room.description} backgroundColor="gray" onPress={this.onRoomClick}/>
+                      <RNE.Button key={room.id} title={room.description} backgroundColor="gray" onPress={() => this.onRoomClick(room)}/>
                     )
                   })
                 }
                 {
-                  !roomsStore.isWorking && roomsStore.availableRooms.length == 0 &&
+                  !roomsStore.isWorking && roomsStore.occupiedRooms.length == 0 &&
                   <Text>All rooms are available</Text>
                 }
               </CardItem>

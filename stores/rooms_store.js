@@ -6,6 +6,7 @@ import Room from "../models/room"
 class RoomsStore {
   @observable rooms = [];
   @observable isWorking = false;
+  @observable chosenRoom = null;
 
   @computed get availableRooms() {
     return lodash.reject(this.rooms, "occupied")
@@ -28,6 +29,11 @@ class RoomsStore {
       this.isWorking = false
       console.log(e);
     }
+  }
+
+  selectRoom(room) {
+    this.chosenRoom = room;
+    console.log(this.chosenRoom);
   }
 }
 

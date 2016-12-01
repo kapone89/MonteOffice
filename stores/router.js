@@ -10,6 +10,7 @@ import ScreenPreview from "../components/screen_preview";
 import LightsSwitcher from "../components/lights_switcher"
 import RoomsStatus from "../components/rooms_status"
 import KitchenLamp from "../components/kitchen_lamp"
+import RoomCalendar from "../components/room_calendar"
 
 const routes = {
   "/": NowPlaying,
@@ -21,6 +22,7 @@ const routes = {
   "/lights_switcher": LightsSwitcher,
   "/rooms_status": RoomsStatus,
   "/kitchen_lamp": KitchenLamp,
+  "/room_calendar": RoomCalendar,
 }
 
 class Router {
