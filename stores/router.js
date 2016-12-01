@@ -9,6 +9,7 @@ import PredefinedStreams from "../components/predefined_streams";
 import ScreenPreview from "../components/screen_preview";
 import LightsSwitcher from "../components/lights_switcher"
 import RoomsStatus from "../components/rooms_status"
+import KitchenLamp from "../components/kitchen_lamp"
 
 const routes = {
   "/": NowPlaying,
@@ -19,6 +20,7 @@ const routes = {
   "/screen_preview": ScreenPreview,
   "/lights_switcher": LightsSwitcher,
   "/rooms_status": RoomsStatus,
+  "/kitchen_lamp": KitchenLamp,
 }
 
 class Router {

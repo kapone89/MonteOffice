@@ -4,7 +4,7 @@ import NativeBase, { Title, Icon, Button, Spinner, Col, Row, Grid } from 'native
 import RNE from 'react-native-elements'
 import IosTabs from "./ios_tabs";
 import lightsStore from "../stores/lights_store"
-import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
+import { List, Item, ItemContent, ItemText, Toggle, Badge } from "carbon-native"
 import router from "../stores/router"
 import icon from '../services/icon'
 import Toast from 'react-native-simple-toast';
@@ -57,6 +57,12 @@ export default class LightsSwitcher extends Component {
             </Grid>
 
             <List>
+              <Item onPress={() => router.go("/kitchen_lamp")}>
+                <ItemContent>
+                  <ItemText>Kitchen lamp</ItemText>
+                  <Badge text="Choose color" color="primary" />
+                </ItemContent>
+              </Item>
               {
                 lightsStore.lights.map((light) => {
                   return (
