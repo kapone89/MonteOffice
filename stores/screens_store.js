@@ -4,6 +4,12 @@ import Screen from "../models/screen"
 import { observable } from "mobx"
 import { stringify } from 'query-string';
 
+const predefined = [
+  new Screen({id: 1, name: "wifi credentials", website: "http://freakone.pl/monte/wifi.html" }),
+  new Screen({id: 2, name: "instafeed", website: "http://freakone.pl/monte/4.html" }),
+  new Screen({id: 3, name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" }),
+  new Screen({id: 4, name: "monte logo", website: "http://jsbin.com/wokovo" }),
+]
 
 class ScreensStore {
   @observable chosenScreen = null;
@@ -11,12 +17,7 @@ class ScreensStore {
   @observable isWorking = false
 
   constructor() {
-    this.predefined = [
-      new Screen({id: 1, name: "wifi credentials", website: "http://freakone.pl/monte/wifi.html" }),
-      new Screen({id: 2, name: "instafeed", website: "http://freakone.pl/monte/4.html" }),
-      new Screen({id: 3, name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" }),
-      new Screen({id: 4, name: "monte logo", website: "http://jsbin.com/wokovo" }),
-    ]
+    this.predefined = predefined
   }
 
   async search(query) {

@@ -6,16 +6,17 @@ import { stringify } from 'query-string';
 import Stream from "../models/stream"
 import { observable } from "mobx"
 
+const predefined = [
+  new Stream({id: 1, name: "Yodeling", genre: "Funny", url: "https://dl.dropboxusercontent.com/s/mpht1mvcw8pxotl/National%20Switzerland%20%20Anthem-%20Yodeling.mp3"}),
+  new Stream({id: 2, name: "Jazz24", genre: "Jazz", url: "http://icy1.abacast.com:80/kplu-jazz24aac-64"}),
+];
 
 class StreamsStore {
   @observable searchResults = [];
   @observable isWorking = false
 
   constructor() {
-    this.predefined = [
-      new Stream({id: 1, name: "Yodeling", genre: "Funny", url: "https://dl.dropboxusercontent.com/s/mpht1mvcw8pxotl/National%20Switzerland%20%20Anthem-%20Yodeling.mp3"}),
-      new Stream({id: 2, name: "Jazz24", genre: "Jazz", url: "http://icy1.abacast.com:80/kplu-jazz24aac-64"}),
-    ];
+    this.predefined = predefined;
   }
 
   async search(query) {
