@@ -38,7 +38,7 @@ export default class PredefinedScreens extends Component {
                               <Text>{screen.name}</Text>
 
                           </ListItem>
-                          <ScreenThumbnail screen={screen} size={1} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
+                          <ScreenThumbnail thumb screen={screen} size={1} onPress={() => { screensStore.selectScreen(screen); router.go("/screen_preview") }} />
                         </View>
                       )
                     })

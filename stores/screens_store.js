@@ -8,7 +8,7 @@ const predefined = [
   new Screen({id: 1, name: "wifi credentials", website: "http://freakone.pl/monte/wifi.html" }),
   new Screen({id: 2, name: "instafeed", website: "http://freakone.pl/monte/4.html" }),
   new Screen({id: 3, name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" }),
-  new Screen({id: 4, name: "monte logo", website: "http://jsbin.com/wokovo" }),
+  new Screen({id: 4, name: "monte logo", website: "http://jsbin.com/wokovo", thumb: "http://i.imgur.com/P9zGgt0.png" }),
 ]
 
 class ScreensStore {
