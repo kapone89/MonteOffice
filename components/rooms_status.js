@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
-import NativeBase, { Title, Icon, Button, Spinner, Card, CardItem, Text } from 'native-base';
-import RNE from 'react-native-elements'
+import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Card, CardItem, Text } from 'native-base';
+import { Button as RneButton } from 'react-native-elements'
 import IosTabs from "./ios_tabs";
 import roomsStore from "../stores/rooms_store"
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
@@ -33,8 +33,8 @@ export default class RoomsStatus extends Component {
 
   render(){
     return (
-      <NativeBase.Container theme={this.props.theme}>
-          <NativeBase.Header>
+      <Container theme={this.props.theme}>
+          <Header>
               <Button transparent onPress={() => { router.back() }}>
                   <Icon name={icon('arrow-back')} />
               </Button>
@@ -44,9 +44,9 @@ export default class RoomsStatus extends Component {
               <Button transparent onPress={() => roomsStore.reload()} >
                   <Icon name={icon('refresh')} />
               </Button>
-          </NativeBase.Header>
+          </Header>
 
-          <NativeBase.Content>
+          <Content>
             <Card>
               <CardItem header>
                   <Text>Available</Text>
@@ -59,7 +59,7 @@ export default class RoomsStatus extends Component {
                 {
                   !roomsStore.isWorking && roomsStore.availableRooms.map((room) => {
                     return (
-                      <RNE.Button key={room.id} title={room.description} backgroundColor={rooms_colors[room.id]} onPress={() => this.onRoomClick(room)}/>
+                      <RneButton key={room.id} title={room.description} backgroundColor={rooms_colors[room.id]} onPress={() => this.onRoomClick(room)}/>
                     )
                   })
                 }
@@ -80,7 +80,7 @@ export default class RoomsStatus extends Component {
                 {
                   !roomsStore.isWorking && roomsStore.occupiedRooms.map((room) => {
                     return (
-                      <RNE.Button key={room.id} title={room.description} backgroundColor="gray" onPress={() => this.onRoomClick(room)}/>
+                      <RneButton key={room.id} title={room.description} backgroundColor="gray" onPress={() => this.onRoomClick(room)}/>
                     )
                   })
                 }
@@ -90,12 +90,12 @@ export default class RoomsStatus extends Component {
                 }
               </CardItem>
             </Card>
-          </NativeBase.Content>
+          </Content>
 
-          <NativeBase.Footer >
+          <Footer >
              <IosTabs/>
-         </NativeBase.Footer>
-      </NativeBase.Container>
+         </Footer>
+      </Container>
     )
   }
 }

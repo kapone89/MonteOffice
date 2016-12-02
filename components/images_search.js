@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { WebView, TouchableOpacity, View } from "react-native"
 import { observer } from "mobx-react/native"
-import NativeBase, { Button, Icon, Title, List, ListItem, Text, Spinner, Input } from 'native-base';
+import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text, Spinner, Input, InputGroup } from 'native-base';
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import screensStore from "../stores/screens_store"
@@ -23,18 +23,18 @@ export default class ImagesSearch extends Component {
     render() {
         var screen = new Screen({ name: "Classic Programmers Paintings", website: "http://cpp.kapone89.ml" })
         return (
-          <NativeBase.Container theme={this.props.theme}>
-              <NativeBase.Header searchBar rounded>
-                <NativeBase.InputGroup>
+          <Container theme={this.props.theme}>
+              <Header searchBar rounded>
+                <InputGroup>
                     <Icon name={icon('search')} />
                     <Input placeholder="Find GIFs online" onChangeText={(x) => this.searchImagesDelayed(x)} />
-                </NativeBase.InputGroup>
+                </InputGroup>
                 <Button transparent onPress={() => { router.back() }}>
                     Back
                 </Button>
-              </NativeBase.Header>
+              </Header>
 
-              <NativeBase.Content keyboardShouldPersistTaps={true}>
+              <Content keyboardShouldPersistTaps={true}>
                 {
                   screensStore.isWorking && <Spinner color="#f95346"/>
                 }
@@ -60,12 +60,12 @@ export default class ImagesSearch extends Component {
                     )
                   })
                 }
-              </NativeBase.Content>
+              </Content>
 
-              <NativeBase.Footer >
+              <Footer >
                  <IosTabs/>
-             </NativeBase.Footer>
-          </NativeBase.Container>
+             </Footer>
+          </Container>
         );
     }
 }

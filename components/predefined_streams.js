@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
-import NativeBase, { Title, Icon, InputGroup, Input, Button, Grid, Col } from 'native-base';
+import { Container, Header, Content, Footer, Title, Icon, InputGroup, Input, Button, Grid, Col } from 'native-base';
 import { TouchableHighlight } from "react-native"
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
@@ -12,8 +12,8 @@ import icon from '../services/icon'
 export default class PredefinedStreams extends Component {
     render() {
         return (
-          <NativeBase.Container theme={this.props.theme}>
-              <NativeBase.Header>
+          <Container theme={this.props.theme}>
+              <Header>
                   <Button transparent onPress={() => { router.back() }}>
                       <Icon name={icon('arrow-back')} />
                   </Button>
@@ -23,9 +23,9 @@ export default class PredefinedStreams extends Component {
                   <Button transparent onPress={() => { router.go("/streams_search") }}>
                       <Icon name={icon('search')} />
                   </Button>
-              </NativeBase.Header>
+              </Header>
 
-              <NativeBase.Content>
+              <Content>
                 <List>
                   {
                     streamsStore.predefined.map((stream) => {
@@ -43,12 +43,12 @@ export default class PredefinedStreams extends Component {
                     })
                   }
                 </List>
-              </NativeBase.Content>
+              </Content>
 
-              <NativeBase.Footer >
+              <Footer >
                  <IosTabs/>
-             </NativeBase.Footer>
-          </NativeBase.Container>
+             </Footer>
+          </Container>
         );
     }
 }

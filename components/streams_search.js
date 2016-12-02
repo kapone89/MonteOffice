@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
-import NativeBase, { Title, Icon, InputGroup, Input, Button, Grid, Col, Spinner } from 'native-base';
+import { Container, Header, Content, Footer, Title, Icon, InputGroup, Input, Button, Grid, Col, Spinner } from 'native-base';
 import { TouchableHighlight } from "react-native"
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
@@ -27,19 +27,19 @@ export default class StreamsSearch extends Component {
 
     render() {
         return (
-          <NativeBase.Container theme={this.props.theme}>
-              <NativeBase.Header searchBar rounded>
-                <NativeBase.InputGroup>
+          <Container theme={this.props.theme}>
+              <Header searchBar rounded>
+                <InputGroup>
                     <Icon name={icon('search')} />
                     <Input placeholder="Find radio online" onChangeText={(x) => this.searchStreamsDelayed(x)} />
                     <Icon name={icon('musical-notes')} />
-                </NativeBase.InputGroup>
+                </InputGroup>
                 <Button transparent onPress={() => { router.back() }}>
                     Back
                 </Button>
-              </NativeBase.Header>
+              </Header>
 
-              <NativeBase.Content keyboardShouldPersistTaps={true}>
+              <Content keyboardShouldPersistTaps={true}>
                 {
                   streamsStore.isWorking && <Spinner color="#f95346"/>
                 }
@@ -63,12 +63,12 @@ export default class StreamsSearch extends Component {
                     }
                   </List>
                 }
-              </NativeBase.Content>
+              </Content>
 
-              <NativeBase.Footer >
+              <Footer >
                  <IosTabs/>
-             </NativeBase.Footer>
-            </NativeBase.Container>
+             </Footer>
+            </Container>
         );
     }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
-import NativeBase, { Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon } from 'native-base';
+import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon } from 'native-base';
 import { Range, H1, H4 } from 'carbon-native';
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
@@ -31,8 +31,8 @@ export default class NowPlaying extends Component {
 
     render() {
         return (
-          <NativeBase.Container theme={this.props.theme}>
-              <NativeBase.Header>
+          <Container theme={this.props.theme}>
+              <Header>
                   <Button transparent onPress={() => { router.back() }}>
                       <Icon name={icon('arrow-back')} />
                   </Button>
@@ -42,9 +42,9 @@ export default class NowPlaying extends Component {
                   <Button transparent onPress={() => { router.go("/streams_search") }}>
                       <Icon name={icon('search')} />
                   </Button>
-              </NativeBase.Header>
+              </Header>
 
-              <NativeBase.Content>
+              <Content>
                 <Card>
                     {
                       nowPlayingStore.isWorking && <View>
@@ -106,12 +106,12 @@ export default class NowPlaying extends Component {
                       </List>
                     </View>
                </Card>
-              </NativeBase.Content>
+              </Content>
 
-              <NativeBase.Footer >
+              <Footer >
                  <IosTabs/>
-             </NativeBase.Footer>
-          </NativeBase.Container>
+             </Footer>
+          </Container>
         );
     }
 }

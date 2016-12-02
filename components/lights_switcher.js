@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
-import NativeBase, { Title, Icon, Button, Spinner, Col, Row, Grid } from 'native-base';
-import RNE from 'react-native-elements'
+import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Col, Row, Grid } from 'native-base';
+import { Button as RneButton } from 'react-native-elements'
 import IosTabs from "./ios_tabs";
 import lightsStore from "../stores/lights_store"
 import { List, Item, ItemContent, ItemText, Toggle, Badge } from "carbon-native"
@@ -29,8 +29,8 @@ export default class LightsSwitcher extends Component {
 
   render(){
     return (
-      <NativeBase.Container theme={this.props.theme}>
-          <NativeBase.Header>
+      <Container theme={this.props.theme}>
+          <Header>
               <Button transparent onPress={() => { router.back() }}>
                   <Icon name={icon('arrow-back')} />
               </Button>
@@ -42,16 +42,16 @@ export default class LightsSwitcher extends Component {
                     <Spinner color="white"/>
                 </Button>
               }
-          </NativeBase.Header>
+          </Header>
 
-          <NativeBase.Content>
+          <Content>
             <Grid style={{marginTop: 10, marginBottom: 15}}>
               <Row>
                 <Col>
-                  <RNE.Button small borderRadius={5} backgroundColor="#2ECC40" title="Turn ON common" onPress={this.turnOnCommon} />
+                  <RneButton small borderRadius={5} backgroundColor="#2ECC40" title="Turn ON common" onPress={this.turnOnCommon} />
                 </Col>
                 <Col>
-                  <RNE.Button small borderRadius={5} backgroundColor="#FF4136" title="Turn OFF all" onPress={this.turnOffAll} />
+                  <RneButton small borderRadius={5} backgroundColor="#FF4136" title="Turn OFF all" onPress={this.turnOffAll} />
                 </Col>
               </Row>
             </Grid>
@@ -80,12 +80,12 @@ export default class LightsSwitcher extends Component {
                 })
               }
             </List>
-          </NativeBase.Content>
+          </Content>
 
-          <NativeBase.Footer >
+          <Footer >
              <IosTabs/>
-         </NativeBase.Footer>
-      </NativeBase.Container>
+         </Footer>
+      </Container>
     )
   }
 }

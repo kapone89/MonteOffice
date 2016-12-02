@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
-import NativeBase, { Title, Icon, Button, Spinner, Card, CardItem, Text } from 'native-base';
-import RNE from 'react-native-elements'
+import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Card, CardItem, Text } from 'native-base';
+import { Button as RneButton } from 'react-native-elements'
 import IosTabs from "./ios_tabs";
 import { List, Item, ItemContent, ItemText, Toggle } from "carbon-native"
 import router from "../stores/router"
@@ -20,21 +20,21 @@ export default class KitchenLamp extends Component {
 
   render(){
     return (
-      <NativeBase.Container theme={this.props.theme}>
-          <NativeBase.Header>
+      <Container theme={this.props.theme}>
+          <Header>
               <Button transparent onPress={() => { router.back() }}>
                   <Icon name={icon('arrow-back')} />
               </Button>
 
               <Title>Kitchen lamp color</Title>
-          </NativeBase.Header>
+          </Header>
 
-          <NativeBase.Content>
+          <Content>
             <View style={{marginTop: 10}}>
             {
               lightsStore.kitchenLampColors.map((color) => {
                 return (
-                  <RNE.Button
+                  <RneButton
                     key={color.id}
                     title={color.name}
                     backgroundColor={color.code}
@@ -45,12 +45,12 @@ export default class KitchenLamp extends Component {
               })
             }
             </View>
-          </NativeBase.Content>
+          </Content>
 
-          <NativeBase.Footer >
+          <Footer >
              <IosTabs/>
-         </NativeBase.Footer>
-      </NativeBase.Container>
+         </Footer>
+      </Container>
     )
   }
 }
