@@ -730,6 +730,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.monterail.officeapp;
 				PRODUCT_NAME = MonteOffice;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -754,6 +755,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.monterail.officeapp;
 				PRODUCT_NAME = MonteOffice;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
