@@ -34,7 +34,7 @@ export default class StreamsSearch extends Component {
                     <Input placeholder="Find radio online" onChangeText={(x) => this.searchStreamsDelayed(x)} />
                     <Icon name={icon('musical-notes')} />
                 </InputGroup>
-                <Button transparent onPress={() => { router.back() }}>
+                <Button transparent onPress={router.back}>
                     Back
                 </Button>
               </Header>

@@ -1,5 +1,6 @@
 import { observable, computed } from "mobx"
 import lodash from "lodash"
+import autobind from 'autobind-decorator'
 
 import NowPlaying from "../components/now_playing";
 import StreamsSearch from "../components/streams_search";
@@ -25,6 +26,7 @@ const routes = {
   "/room_calendar": RoomCalendar,
 }
 
+@autobind
 class Router {
   @observable stack = []
 

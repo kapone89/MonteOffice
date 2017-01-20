@@ -29,7 +29,7 @@ export default class ImagesSearch extends Component {
                     <Icon name={icon('search')} />
                     <Input placeholder="Find GIFs online" onChangeText={(x) => this.searchImagesDelayed(x)} />
                 </InputGroup>
-                <Button transparent onPress={() => { router.back() }}>
+                <Button transparent onPress={router.back}>
                     Back
                 </Button>
               </Header>

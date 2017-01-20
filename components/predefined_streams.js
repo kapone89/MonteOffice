@@ -14,7 +14,7 @@ export default class PredefinedStreams extends Component {
         return (
           <Container theme={this.props.theme}>
               <Header>
-                  <Button transparent onPress={() => { router.back() }}>
+                  <Button transparent onPress={router.back}>
                       <Icon name={icon('arrow-back')} />
                   </Button>
 
