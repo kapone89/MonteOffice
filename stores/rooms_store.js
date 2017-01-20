@@ -1,8 +1,10 @@
 import lodash from "lodash"
 import { fetch } from "fetch";
 import { observable, computed } from "mobx"
+import autobind from "autobind-decorator"
 import Room from "../models/room"
 
+@autobind
 class RoomsStore {
   @observable rooms = [];
   @observable isWorking = false;

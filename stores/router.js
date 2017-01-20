@@ -1,12 +1,11 @@
 import { observable, computed } from "mobx"
 import lodash from "lodash"
-import autobind from 'autobind-decorator'
+import autobind from "autobind-decorator"
 
 import NowPlaying from "../components/now_playing";
 import StreamsSearch from "../components/streams_search";
 import ImagesSearch from "../components/images_search";
 import PredefinedScreens from "../components/predefined_screens";
-import PredefinedStreams from "../components/predefined_streams";
 import ScreenPreview from "../components/screen_preview";
 import LightsSwitcher from "../components/lights_switcher"
 import RoomsStatus from "../components/rooms_status"
@@ -18,7 +17,6 @@ const routes = {
   "/streams_search": StreamsSearch,
   "/images_search": ImagesSearch,
   "/predefined_screens": PredefinedScreens,
-  "/predefined_streams": PredefinedStreams,
   "/screen_preview": ScreenPreview,
   "/lights_switcher": LightsSwitcher,
   "/rooms_status": RoomsStatus,

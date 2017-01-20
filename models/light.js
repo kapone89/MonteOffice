@@ -1,7 +1,9 @@
 import { fetch } from "fetch";
 import { observable } from "mobx"
 import lodash from "lodash"
+import autobind from "autobind-decorator"
 
+@autobind
 export default class Light {
   @observable state = false;
 

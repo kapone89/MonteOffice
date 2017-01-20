@@ -41,7 +41,7 @@ export default class RoomsStatus extends Component {
 
               <Title>Rooms status</Title>
 
-              <Button transparent onPress={() => roomsStore.reload()} >
+              <Button transparent onPress={roomsStore.reload} >
                   <Icon name={icon('refresh')} />
               </Button>
           </Header>
