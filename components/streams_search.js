@@ -41,7 +41,7 @@ export default class StreamsSearch extends Component {
                 </Button>
               </Header>
 
-              <Content keyboardShouldPersistTaps={true}>
+              <Content keyboardShouldPersistTaps="always">
                 {
                   streamsStore.isWorking && <Spinner color="#f95346"/>
                 }

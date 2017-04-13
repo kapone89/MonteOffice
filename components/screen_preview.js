@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { WebView, TouchableOpacity } from "react-native"
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Button, Icon, Title, Text, Grid, Col, Row } from 'native-base';
+import { Container, Header, Content, Footer, Button, Icon, Title, Text, Grid, Col, Row, Left, Right, Body } from 'native-base';
 import IosTabs from "./ios_tabs";
 import ScreenThumbnail from "./screen_thumbnail"
 import screensStore from "../stores/screens_store"
@@ -22,11 +22,17 @@ export default class ScreenPreview extends Component {
         return (
           <Container theme={this.props.theme}>
               <Header>
-                  <Button transparent onPress={router.back}>
-                      <Icon name={icon('arrow-back')} />
-                  </Button>
+                  <Left>
+                    <Button transparent onPress={router.back}>
+                        <Icon name={icon('arrow-back')} />
+                    </Button>
+                  </Left>
 
-                  <Title>Screen preview</Title>
+                  <Body>
+                    <Title>Screen preview</Title>
+                  </Body>
+
+                  <Right />
               </Header>
 
               <Content>

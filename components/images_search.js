@@ -36,7 +36,7 @@ export default class ImagesSearch extends Component {
                 </Button>
               </Header>
 
-              <Content keyboardShouldPersistTaps={true}>
+              <Content keyboardShouldPersistTaps="always">
                 {
                   screensStore.isWorking && <Spinner color="#f95346"/>
                 }
