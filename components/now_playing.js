@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon } from 'native-base';
+import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon, Left, Right, Body } from 'native-base';
 import { Range, H1, H4 } from 'carbon-native';
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
@@ -33,15 +33,21 @@ export default class NowPlaying extends Component {
         return (
           <Container theme={this.props.theme}>
               <Header>
-                  <Button transparent onPress={router.back}>
-                      <Icon name={icon('arrow-back')} />
-                  </Button>
+                  <Left>
+                    <Button transparent onPress={router.back}>
+                        <Icon name={icon('arrow-back')} />
+                    </Button>
+                  </Left>
 
-                  <Title>Now playing</Title>
+                  <Body>
+                    <Title>Now playing</Title>
+                  </Body>
 
-                  <Button transparent onPress={() => { router.go("/streams_search") }}>
-                      <Icon name={icon('search')} />
-                  </Button>
+                  <Right>
+                    <Button transparent onPress={() => { router.go("/streams_search") }}>
+                        <Icon name={icon('search')} />
+                    </Button>
+                  </Right>
               </Header>
 
               <Content>

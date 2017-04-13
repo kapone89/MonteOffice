@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Col, Row, Grid } from 'native-base';
+import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Col, Row, Grid, Left, Right, Body} from 'native-base';
 import { Button as RneButton } from 'react-native-elements'
 import IosTabs from "./ios_tabs";
 import lightsStore from "../stores/lights_store"
@@ -31,17 +31,23 @@ export default class LightsSwitcher extends Component {
     return (
       <Container theme={this.props.theme}>
           <Header>
-              <Button transparent onPress={router.back}>
-                  <Icon name={icon('arrow-back')} />
-              </Button>
-
-              <Title>Lights</Title>
-
-              { lightsStore.isWorking &&
-                <Button transparent>
-                    <Spinner color="white"/>
+              <Left>
+                <Button transparent onPress={router.back}>
+                    <Icon name={icon('arrow-back')} />
                 </Button>
-              }
+              </Left>
+
+              <Body>
+                <Title>Lights</Title>
+              </Body>
+
+              <Right>
+                { lightsStore.isWorking &&
+                  <Button transparent>
+                      <Spinner color="white"/>
+                  </Button>
+                }
+              </Right>
           </Header>
 
           <Content>

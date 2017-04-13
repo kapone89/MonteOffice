@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { WebView, TouchableOpacity, View } from "react-native"
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text, Spinner, Input, InputGroup } from 'native-base';
+import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text, Spinner, Input, InputGroup, Left, Right, Body } from 'native-base';
 import IosTabs from "./ios_tabs";
 import { SearchBar } from 'react-native-elements'
 import screensStore from "../stores/screens_store"
@@ -25,12 +25,14 @@ export default class ImagesSearch extends Component {
         return (
           <Container theme={this.props.theme}>
               <Header searchBar rounded>
-                <InputGroup>
-                    <Icon name={icon('search')} />
-                    <Input placeholder="Find GIFs online" onChangeText={(x) => this.searchImagesDelayed(x)} />
-                </InputGroup>
+                <Body>
+                  <InputGroup>
+                      <Icon name={icon('search')} />
+                      <Input placeholder="Find GIFs online" onChangeText={(x) => this.searchImagesDelayed(x)} />
+                  </InputGroup>
+                </Body>
                 <Button transparent onPress={router.back}>
-                    Back
+                    <Text>Back</Text>
                 </Button>
               </Header>
 

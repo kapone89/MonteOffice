@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Card, CardItem, Text } from 'native-base';
+import { Container, Header, Content, Footer, Title, Icon, Button, Spinner, Card, CardItem, Text, Left, Right, Body } from 'native-base';
 import { Button as RneButton } from 'react-native-elements'
 import IosTabs from "./ios_tabs";
 import roomsStore from "../stores/rooms_store"
@@ -35,15 +35,21 @@ export default class RoomsStatus extends Component {
     return (
       <Container theme={this.props.theme}>
           <Header>
-              <Button transparent onPress={router.back}>
-                  <Icon name={icon('arrow-back')} />
-              </Button>
+              <Left>
+                <Button transparent onPress={router.back}>
+                    <Icon name={icon('arrow-back')} />
+                </Button>
+              </Left>
 
-              <Title>Rooms status</Title>
+              <Body>
+                <Title>Rooms status</Title>
+              </Body>
 
-              <Button transparent onPress={roomsStore.reload} >
-                  <Icon name={icon('refresh')} />
-              </Button>
+              <Right>
+                <Button transparent onPress={roomsStore.reload} >
+                    <Icon name={icon('refresh')} />
+                </Button>
+              </Right>
           </Header>
 
           <Content>

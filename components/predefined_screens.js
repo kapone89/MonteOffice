@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text } from 'native-base';
+import { Container, Header, Content, Footer, Button, Icon, Title, List, ListItem, Text, Left, Right, Body } from 'native-base';
 import IosTabs from "./ios_tabs";
 import router from '../stores/router';
 import ScreenThumbnail from "./screen_thumbnail"
@@ -15,15 +15,21 @@ export default class PredefinedScreens extends Component {
         return (
           <Container theme={this.props.theme}>
               <Header>
-                  <Button transparent onPress={router.back}>
-                      <Icon name={icon('arrow-back')} />
-                  </Button>
+                  <Left>
+                    <Button transparent onPress={router.back}>
+                        <Icon name={icon('arrow-back')} />
+                    </Button>
+                  </Left>
 
-                  <Title>Predefined screens</Title>
+                  <Body>
+                    <Title>Predefined screens</Title>
+                  </Body>
 
-                  <Button transparent onPress={() => { router.go("/images_search") }}>
-                      <Icon name={icon('search')} />
-                  </Button>
+                  <Right>
+                    <Button transparent onPress={() => { router.go("/images_search") }}>
+                        <Icon name={icon('search')} />
+                    </Button>
+                  </Right>
               </Header>
 
               <Content>

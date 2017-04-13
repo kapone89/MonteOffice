@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Title, Icon, InputGroup, Input, Button, Grid, Col, Spinner } from 'native-base';
+import { Container, Header, Content, Footer, Title, Icon, InputGroup, Input, Button, Grid, Col, Spinner, Text, Left, Right, Body } from 'native-base';
 import { TouchableHighlight } from "react-native"
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
@@ -29,13 +29,15 @@ export default class StreamsSearch extends Component {
         return (
           <Container theme={this.props.theme}>
               <Header searchBar rounded>
-                <InputGroup>
-                    <Icon name={icon('search')} />
-                    <Input placeholder="Find radio online" onChangeText={(x) => this.searchStreamsDelayed(x)} />
-                    <Icon name={icon('musical-notes')} />
-                </InputGroup>
+                <Body>
+                  <InputGroup>
+                      <Icon name={icon('search')} />
+                      <Input placeholder="Find radio online" onChangeText={(x) => this.searchStreamsDelayed(x)} />
+                      <Icon name={icon('musical-notes')} />
+                  </InputGroup>
+                </Body>
                 <Button transparent onPress={router.back}>
-                    Back
+                    <Text>Back</Text>
                 </Button>
               </Header>
 
