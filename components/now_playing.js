@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { View } from "react-native"
 import { observer } from "mobx-react/native"
-import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon, Left, Right, Body } from 'native-base';
-import { Range, H1, H4 } from 'carbon-native';
+import { Container, Header, Content, Footer, Button, Title, Spinner, Grid, Col, Card, CardItem, Text, Icon, Left, Right, Body, H1 } from 'native-base';
+import { Range } from 'carbon-native';
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { Item, ItemIcon, ItemContent, ItemText, Note, List } from "carbon-native"
 import IosTabs from "./ios_tabs";
 import nowPlayingStore from "../stores/now_playing_store"
@@ -71,19 +72,25 @@ export default class NowPlaying extends Component {
                         </CardItem>
 
                         <CardItem>
+                          <Body>
                             <H1>{nowPlayingStore.nowPlayingName}</H1>
                             <Text>{nowPlayingStore.nowPlayingUrl}</Text>
+                          </Body>
                         </CardItem>
 
                         <CardItem header>
+                          <Body>
                             <Text>Volume</Text>
+                          </Body>
                         </CardItem>
 
                         <CardItem>
+                          <Body>
                             <Range
                               onValueChange={(v) => this.changeVolumeDelayed(v)}
                               value={nowPlayingStore.volume / 100}
                             />
+                          </Body>
                         </CardItem>
                       </View>
                     }
